@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [MyntraSuite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="HomePageTest(failed)">
+    <classes>
+      <class name="com.myntra.tests.HomePageTests">
+        <methods>
+          <include name="verifyWishlistAccessWithoutLogin"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.myntra.tests.HomePageTests -->
+    </classes>
+  </test> <!-- HomePageTest(failed) -->
+</suite> <!-- Failed suite [MyntraSuite] -->
