@@ -22,12 +22,9 @@ public class Keyword {
 	static public RemoteWebDriver driver;
 
 	public static void openBrowser(String browserName) {
-
 		if (browserName.equalsIgnoreCase("chrome")) {
-			
 			ChromeOptions options = new ChromeOptions();
-			
-			 options.addArguments("--disable-notifications");//disable the notification pop up chrome browser
+			options.addArguments("--disable-notifications");// disable the notification pop up chrome browser
 			driver = new ChromeDriver(options);
 
 		} else if (browserName.equalsIgnoreCase("firefox")) {
@@ -42,7 +39,6 @@ public class Keyword {
 
 	public static void launchUrl(String url) {
 		driver.get(url);
-
 	}
 
 	/*
@@ -122,6 +118,7 @@ public class Keyword {
 
 	public static void closeBrowser() {
 		driver.quit();
+
 	}
 
 	public static void maximizeWindow() {
@@ -131,43 +128,36 @@ public class Keyword {
 	public static void hover(WebElement womenMenu) {
 		Actions action = new Actions(driver);
 		action.moveToElement(womenMenu).perform();
-		
+
 	}
-	
+
 	public static void switchToNewWindow() {
 		Set<String> win = driver.getWindowHandles();
 		for (String windows : win) {
 			driver.switchTo().window(windows);
 		}
-		
 	}
-	
+
 	public static void clickOnElement(WebElement element) {
 		WaitFor.elementToBeClickable(element);//
 		element.click();
 	}
-	
-	
+
 	public static void WaitForSeconds(int miliseconds) {
 		try {
 			Thread.sleep(miliseconds);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
 	}
-	
-	
-	
+
 	public static void scrollToElement(WebElement element) {
-
-		//JavascriptExecutor js = (JavascriptExecutor) driver;
+		// JavascriptExecutor js = (JavascriptExecutor) driver;
 		driver.executeScript("arguments[0].scrollIntoView(true);", element);
-
 	}
 
 	public static void clickOn(WebElement element) {
-	    WaitFor.elementToBeClickable(element);
-	    element.click();
+		WaitFor.elementToBeClickable(element);
+		element.click();
 	}
 }

@@ -16,19 +16,20 @@ public class Screenshot {
 	public static void captureScreenshot(RemoteWebDriver driver, String testName) {
 
 		// Take screenshot
-        File src = driver.getScreenshotAs(OutputType.FILE);
-        
-        // date and time
-        String time =LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
-        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        // Destination path
-        File dest = new File("screenshots/" + testName + "_" +date + ".png");
-        
-        try {
+		File src = driver.getScreenshotAs(OutputType.FILE);
+
+		// date and time
+		String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
+		String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		// Destination path
+		File dest = new File("screenshots/" + testName + "_" + date + ".png");
+
+		try {
 			FileUtils.copyFile(src, dest);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+
 }

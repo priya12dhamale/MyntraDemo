@@ -47,10 +47,10 @@ public class BaseClass {
 		launchUrl(url);
 		// getUrl(url);
 	}
-
-	// @AfterMethod
-	// public void tearDown() {
-	// closeBrowser();
-	// }
+//
+//	 @AfterMethod
+//	 public void tearDown() {
+//	 closeBrowser();
+//	 }
 
 }

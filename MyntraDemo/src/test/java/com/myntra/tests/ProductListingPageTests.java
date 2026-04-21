@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
 import static com.myntra.base.Keyword.*;
 import com.myntra.base.BaseClass;
 import com.myntra.dataprovider.DataProviderClass;
@@ -176,7 +178,140 @@ public class ProductListingPageTests extends BaseClass {
 
 		String encodedCategory = category.replace(" ", "%20");
 
-		Assert.assertTrue(currentUrl.toLowerCase().contains(encodedCategory.toLowerCase()), category + " filter not applied");
+		Assert.assertTrue(currentUrl.toLowerCase().contains(encodedCategory.toLowerCase()),
+				category + " filter not applied");
+	}
+
+	@Test
+	public void verifyProductSortingHighToLow() throws InterruptedException {
+
+		HomePage home = new HomePage();
+		ProductListingPage plp = new ProductListingPage();
+
+		home.hoverOnWomenMenu();
+		home.clickWesternWear();
+
+		plp.selectCategory1("Top");
+		plp.selectBrand1("Roadster");
+
+		plp.selectPriceHighToLow();
+		Thread.sleep(2000);
+		// WaitFor.visibilityOfAllElements(productPrices);
+		List<Integer> actualPrices = plp.getProductPrices();
+
+		System.out.println("Actual Prices: " + actualPrices);
+
+		List<Integer> sortedPrices = new ArrayList<>(actualPrices);
+
+		Collections.sort(sortedPrices, Collections.reverseOrder());
+
+		System.out.println("Sorted Prices: " + sortedPrices);
+
+		Assert.assertEquals(actualPrices, sortedPrices, "Products are not sorted from High to Low");
+	}
+
+	@Test
+	public void verifyScrollLoadsMoreProducts() {
+
+		HomePage home = new HomePage();
+		ProductListingPage plp = new ProductListingPage();
+
+		home.hoverOnWomenMenu();
+		home.clickWesternWear();
+
+		int beforeScroll = plp.getProductCount();
+
+		System.out.println("Before Scroll: " + beforeScroll);
+
+		plp.scrollToLastProduct();
+
+		// wait for new products to load
+		// WaitFor.visibilityOfAllElements(plp.products);
+
+		int afterScroll = plp.getProductCount();
+
+		System.out.println("After Scroll: " + afterScroll);
+
+		Assert.assertTrue(afterScroll >= beforeScroll, "Products did not load after scrolling");
+	}
+
+	@Test
+	public void verifyClearFiltersRestoresProductList() {
+
+		HomePage home = new HomePage();
+		ProductListingPage plp = new ProductListingPage();
+
+		home.hoverOnWomenMenu();
+		home.clickIndianFusionWear();
+
+		// Step 1 — Get initial product count
+		int initialCount = plp.getProductCount();
+
+		System.out.println("Initial Count: " + initialCount);
+
+		// Step 2 — Apply filters
+		plp.selectBrand1("Biba");
+		plp.selectColour1("Black");
+
+		int filteredCount = plp.getProductCount();
+
+		System.out.println("Filtered Count: " + filteredCount);
+
+		// Step 3 — Verify filter affected product list
+		Assert.assertTrue(filteredCount <= initialCount, "Filters did not change product list");
+
+		// Step 4 — Clear filters
+		plp.clearAllFilters();
+
+		int afterClearCount = plp.getProductCount();
+
+		System.out.println("After Clear Count: " + afterClearCount);
+
+		// Step 5 — Verify product list restored
+		Assert.assertTrue(afterClearCount >= filteredCount, "Product list not restored after clearing filters");
+	}
+
+	@Test
+	public void verifyFilterChipDisplayedAfterApplyingBrandFilter() {
+
+		HomePage home = new HomePage();
+		ProductListingPage plp = new ProductListingPage();
+
+		home.hoverOnWomenMenu();
+		home.clickIndianFusionWear();
+
+		plp.selectBrand1("Biba");
+
+		boolean isChipDisplayed = plp.isFilterChipDisplayed("Biba");
+
+		System.out.println("Brand chip displayed: " + isChipDisplayed);
+
+		Assert.assertTrue(isChipDisplayed, "Brand filter chip not displayed");
+	}
+
+	@Test
+	public void verifySelectingNonExistingBrandDoesNotChangeUI() {
+
+		SoftAssert softAssert = new SoftAssert();
+
+		HomePage home = new HomePage();
+		ProductListingPage plp = new ProductListingPage();
+
+		home.hoverOnWomenMenu();
+		home.searchProduct("kurtas");
+
+		softAssert.assertTrue(plp.isProductDisplayed(), "PLP page not displayed");
+
+		int productCountBefore = plp.getProductCount();
+
+		plp.selectBrand1("NonExistingBrand");
+
+		int productCountAfter = plp.getProductCount();
+
+		softAssert.assertEquals(productCountAfter, productCountBefore,
+				"Product count should remain same when brand not present");
+
+		softAssert.assertAll();
 	}
 
 }

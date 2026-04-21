@@ -1,12 +1,13 @@
 package com.myntra.dataprovider;
 
-import org.testng.annotations.DataProvider;
+import java.io.IOException;
 
+import org.testng.annotations.DataProvider;
 import com.myntra.utils.ExcelUtil;
 
 public class DataProviderClass {
 
-//	    @DataProvider(name = "categoryData")
+//	    @DataProvider(name = "categoryData
 //
 //	    public static Object[][] getFilterData() {
 //
@@ -31,6 +32,12 @@ public class DataProviderClass {
 //
 //	        return categoryOnly;
 //	    }
+//	
+//	@DataProvider(name="categoryData")
+//	public static Object[][] readExcel() throws IOException {
+//		return ExcelUtil.readExcel(0);
+//	
+//	}
 
 	@DataProvider(name = "categoryData")
 	public static Object[][] getCategoryData() {

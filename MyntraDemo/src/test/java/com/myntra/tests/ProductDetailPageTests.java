@@ -12,7 +12,7 @@ import static com.myntra.base.Keyword.*;
 
 public class ProductDetailPageTests extends BaseClass {
 
-	@Test
+	@Test(groups = "smoke")
 	public void verifyProductDetailPageOpens() {
 
 		HomePage home = new HomePage();
@@ -33,7 +33,7 @@ public class ProductDetailPageTests extends BaseClass {
 		Assert.assertTrue(currentUrl.contains("buy"), "Product Detail Page not opened");
 	}
 
-	@Test
+	@Test(groups = "regression")
 	public void verifySameProductDisplayedOnPDP() {
 
 		HomePage home = new HomePage();
@@ -180,8 +180,8 @@ public class ProductDetailPageTests extends BaseClass {
 		Assert.assertTrue(pdp.isGoToBagButtonDisplayed(), "Product was not added to bag");
 	}
 
-	@Test
-	public void verifyAfterClickingWishlistItRedirectsToLoginPage() {
+	@Test(groups = "regression")
+	public void verifyWithoutLoginClickingWishlistItRedirectsToLoginPage() {
 
 		HomePage home = new HomePage();
 
@@ -225,8 +225,8 @@ public class ProductDetailPageTests extends BaseClass {
 
 //	srp.clickProductByIndex(2);
 		// srp.clickProduct(2);
-		srp.clickOnFirstProduct();
-
+		// srp.clickOnFirstProduct();
+		srp.clickProductByIndex(1);
 		switchToNewWindow();
 
 		ProductDetailPage pdp = new ProductDetailPage();
@@ -238,6 +238,5 @@ public class ProductDetailPageTests extends BaseClass {
 		String expectedMsg = "Please select a size";
 		Assert.assertEquals(actuallMsg, expectedMsg, "Size error message is not displayed correctly");
 	}
-	
-	
+
 }

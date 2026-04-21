@@ -1,50 +1,68 @@
-<project xmlns="https://maven.apache.org/POM/4.0.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.skillio</groupId>
-  <artifactId>MyntraDemo</artifactId>
-  <version>0.0.1</version>
-  
-  <dependencies>
-	
-	  <!-- Selenium -->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>4.38.0</version>
-        </dependency>
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.skillio</groupId>
+	<artifactId>MyntraDemo</artifactId>
+	<version>0.0.1</version>
 
-        <!-- TestNG -->
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.10.2</version>
-            <scope>test</scope>
-        </dependency>
+	<dependencies>
 
-        <!-- Apache POI (ONLY THIS is needed for .xlsx Excel) -->
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>5.4.1</version>
-        </dependency>
+		<!-- Selenium -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>4.38.0</version>
+		</dependency>
 
-	
+		<!-- TestNG -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>7.10.2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Apache POI (ONLY THIS is needed for .xlsx Excel) -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>5.4.1</version>
+		</dependency>
+
+		<!-- Source:
+		https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>7.33.0</version>
+
+		</dependency>
+
+		<!-- Source:
+		https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-testng</artifactId>
+			<version>7.33.0</version>
+		</dependency>
+
 	</dependencies>
-	
+
 	<build>
-    <plugins>
+		<plugins>
 
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.11.0</version>
-            <configuration>
-                <source>21</source>
-                <target>21</target>
-                <release>21</release>
-            </configuration>
-        </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.11.0</version>
+				<configuration>
+					<source>21</source>
+					<target>21</target>
+					<release>21</release>
+				</configuration>
+			</plugin>
 
-    </plugins>
-</build>
+		</plugins>
+	</build>
 </project>

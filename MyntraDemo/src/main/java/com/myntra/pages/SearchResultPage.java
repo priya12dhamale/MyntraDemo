@@ -57,19 +57,19 @@ public class SearchResultPage {
 	//	Keyword.WaitForSeconds(4000);
 	}
 	
-	public void clickOnFirstProduct() {
-
-	    WaitFor.elementToBeVisible(firstProduct);
-	    WaitFor.elementToBeClickable(firstProduct);
-
-	    try {
-	        firstProduct.click();
-	    } catch (StaleElementReferenceException e) {
-
-	        WaitFor.elementToBeVisible(firstProduct);
-	        firstProduct.click();
-	    }
-	}
+//	public void clickOnFirstProduct() {
+//
+//	    WaitFor.elementToBeVisible(firstProduct);
+//	    WaitFor.elementToBeClickable(firstProduct);
+//
+//	    try {
+//	        firstProduct.click();
+//	    } catch (StaleElementReferenceException e) {
+//
+//	        WaitFor.elementToBeVisible(firstProduct);
+//	        firstProduct.click();
+//	    }
+//	}
 	
 	public void clickProductByIndex(int index) {
 		

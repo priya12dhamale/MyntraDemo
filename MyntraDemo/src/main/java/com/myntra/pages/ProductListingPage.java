@@ -104,6 +104,12 @@ public class ProductListingPage {
 	@FindBy(xpath = "//span[@class='filter-value']")
 	List<WebElement> appliedFilters;
 
+	@FindBy(xpath = "//a[contains(@class,'pagination-next')]")
+	WebElement nextPageButton;
+
+	@FindBy(xpath = "//li[contains(@class,'product-base')]")
+	List<WebElement> products;
+
 //    @FindBy(xpath = "//h3[@class='product-brand']")
 //    List<WebElement> productTitles;
 //    @FindBy(xpath = "//h4[@class='product-product']")
@@ -182,26 +188,56 @@ public class ProductListingPage {
 		categoryOption.click();
 		Keyword.WaitForSeconds(2000);
 		// Keyword.clickOnElement(categoryOption);
-
 	}
 
+//	public void selectBrand1(String BrandName) {
+//
+//		WaitFor.elementToBeVisible(brandSearch);
+//		WaitFor.elementToBeClickable(brandSearch);
+//		Keyword.clickOnElement(brandSearch);
+//		// brandSearch.click();
+//		By BrandSearch = By.xpath("//input[@placeholder=\"Search for Brand\"]");//
+//		WaitFor.elementToBeVisible(BrandSearch);
+//		Keyword.enterText("xpath", "//input[@placeholder=\"Search for Brand\"]", BrandName);//
+//		WaitFor.elementToBeVisible(brandOptions);
+//		WaitFor.elementToBeClickable(brandOptions);
+//
+//		brandOptions.click();
+//		// WaitFor.elementToBeClickable(brandOptions);
+//		Keyword.WaitForSeconds(2000);
+//	}
+
+	
 	public void selectBrand1(String BrandName) {
 
-		WaitFor.elementToBeVisible(brandSearch);
-		WaitFor.elementToBeClickable(brandSearch);
-		Keyword.clickOnElement(brandSearch);
-		// brandSearch.click();
-		By BrandSearch = By.xpath("//input[@placeholder=\"Search for Brand\"]");//
-		WaitFor.elementToBeVisible(BrandSearch);
-		Keyword.enterText("xpath", "//input[@placeholder=\"Search for Brand\"]", BrandName);//
-		WaitFor.elementToBeVisible(brandOptions);
-		WaitFor.elementToBeClickable(brandOptions);
+	    WaitFor.elementToBeVisible(brandSearch);
+	    WaitFor.elementToBeClickable(brandSearch);
+	    Keyword.clickOnElement(brandSearch);
 
-		brandOptions.click();
-		// WaitFor.elementToBeClickable(brandOptions);
-		Keyword.WaitForSeconds(2000);
+	    By BrandSearch = By.xpath("//input[@placeholder=\"Search for Brand\"]");
+
+	    WaitFor.elementToBeVisible(BrandSearch);
+
+	    Keyword.enterText(
+	            "xpath",
+	            "//input[@placeholder=\"Search for Brand\"]",
+	            BrandName
+	    );
+
+	    // IMPORTANT: use findElements instead of wait
+	    List<WebElement> brandList =
+	            driver.findElements(By.xpath("//ul[@class='brand-list']/li"));
+
+	    if (brandList.size() == 0) {
+
+	      //  System.out.println("Brand not found: " + BrandName);
+	        return;   
+	    }
+	    WaitFor.elementToBeClickable(brandOptions);
+	    brandOptions.click();
+	  //  Keyword.WaitForSeconds(2000);
 	}
-
+	
 	public void selectColour1(String ColourName) {
 		// Keyword.scrollToElement(colourSearch);
 		WaitFor.elementToBeVisible(colourSearch);
@@ -214,7 +250,7 @@ public class ProductListingPage {
 		WaitFor.elementToBeClickable(colorOptions);
 		colorOptions.click();
 		// driver.executeScript("arguments[0].click();", colorOptions);
-		Keyword.WaitForSeconds(2000);
+	//	Keyword.WaitForSeconds(2000);
 		// WaitFor.elementToBeClickable(colorOptions);
 	}
 
@@ -234,9 +270,9 @@ public class ProductListingPage {
 
 		WaitFor.elementToBeClickable(sortByDropdown);
 		sortByDropdown.click();
-
 		WaitFor.elementToBeClickable(lowToHighOption);
 		lowToHighOption.click();
+		WaitFor.visibilityOfAllElements(productPrices);
 
 	}
 
@@ -244,7 +280,6 @@ public class ProductListingPage {
 
 		WaitFor.elementToBeClickable(sortByDropdown);
 		sortByDropdown.click();
-
 		WaitFor.elementToBeClickable(highToLowOption);
 		highToLowOption.click();
 
@@ -254,7 +289,6 @@ public class ProductListingPage {
 
 		List<Integer> priceList = new ArrayList<>();
 
-		// WaitFor.pageToLoad();
 		WaitFor.visibilityOfAllElements(productPrices);
 
 		try {
@@ -295,76 +329,9 @@ public class ProductListingPage {
 		return priceList;
 	}
 
-//	public void selectBrand(String brandName) {
-//		WaitFor.elementToBeVisible(By.xpath("//span[text()='Brand']"));//
-//		WaitFor.elementToBeVisible(brandSearch);
-//
-//		String xpath = "//div[contains(@class,'brand-container')]//label[contains(.,'" + brandName + "')]";
-//		// WebElement brandOption = driver.findElement(By.xpath(xpath));
-//		WaitFor.elementToBeVisible(By.xpath(xpath));
-//
-//		WebElement brandOption = driver.findElement(By.xpath(xpath));
-//		WaitFor.elementToBeClickable(brandOption);
-//		// brandOption.click();
-//		((JavascriptExecutor) driver).executeScript("arguments[0].click();", brandOption);
-//
-//		Keyword.WaitForSeconds(4000);
-//
-//	}
 
-//	public void selectColour(String colorName) {
-	// div[@class="vertical-filters-filters"]/child::span[text()='Color']
-	// String xpath = "//div[contains(@class,'colour-more')]//span[text()='" +
-	// colorName + "']";
-	// String xpath = "//span[text()='Color']/following::span[text()='" + colorName
-	// + "']";
-	// WaitFor.elementToBeVisible(By.xpath("//span[text()='Color']"));//
-//		String xpath = "//li[contains(@class,'colour-listItem')]//label[contains(.,'" + colorName + "')]";
-//		WebElement colorOption = driver.findElement(By.xpath(xpath));
-//		WaitFor.elementToBeVisible(By.xpath(xpath));
-//		// ((JavascriptExecutor)
-//		// driver).executeScript("arguments[0].scrollIntoView(true);", colorOption);
-//
-//		// WaitFor.elementToBeVisible(colorOption);
-//		WaitFor.elementToBeClickable(colorOption);
-//		// WaitFor.elementToBeVisible(By.xpath(xpath));
-//		colorOption.click();
-//		By products = By.xpath("//li[contains(@class,'product-base')]");//
-//		WaitFor.numberOfElementsToBeMoreThan(products, 0);//
-//
-//		WaitForSeconds(4000);
-//
-//	}
-//	public void selectColour(String colourName) {
-//
-//	//	By colourFilter = By.xpath("//label[contains(text(),'" + colourName + "')]");
-//
-//		//WebElement element = driver.findElement(colourFilter);
-//		String xpath ="//li[contains(@class,'colour-listItem')]//label[contains(.,'" + colourName + "')]";
-//		WebElement element = driver.findElement(By.xpath(xpath));
-//		
-//		driver.executeScript("arguments[0].scrollIntoView(true);", element);
-//		
-//		WaitFor.elementToBeClickable(element);
-//
-//		element.click();
-//
-//		// Wait for products to reload after filter
-//
-//		By products = By.xpath("//li[contains(@class,'product-base')]");
-//
-//		WaitFor.numberOfElementsToBeMoreThan(products, 0);
-//	}
-//	
-//	private void waitforfilterapplied(String filterName) {
 
-	// String xpath = "//span[contains(text(),'" + filterName + "')]";
-	// WaitFor.elementToBeVisible(By.xpath(xpath));
-//		 WaitFor.elementToBeClickable(By.xpath(xpath));
 
-//	public String getBreadCrumbsText() {
-//		return breadCrumbs.getText();
-//	}
 
 	public String getBreadCrumbText() {
 		WaitFor.elementToBeVisible(breadCrumb);
@@ -378,4 +345,47 @@ public class ProductListingPage {
 		return breadcrumbs.get(breadcrumbs.size() - 1).getText();
 	}
 
+	public void clickNextPage() {
+
+		WaitFor.elementToBeClickable(nextPageButton);
+
+		nextPageButton.click();
+
+		WaitFor.visibilityOfAllElements(productPrices);
+
+	}
+
+	public void scrollToLastProduct() {
+
+		int lastIndex = products.size() - 1;
+
+		WebElement lastProduct = products.get(lastIndex);
+
+		scrollToElement(lastProduct);
+
+	}
+
+	public boolean isFilterChipDisplayed(String filterName) {
+
+		try {
+
+			List<WebElement> chips = driver.findElements(By.xpath("//div[contains(@class,'filter-summary-filter')]"));
+
+			for (WebElement chip : chips) {
+
+				String chipText = chip.getText().trim();
+
+				System.out.println("Chip text: " + chipText);
+
+				if (chipText.equalsIgnoreCase(filterName)) {
+
+					return true;
+				}
+			}
+			return false;
+		} catch (Exception e) {
+			
+			return false;
+		}
+	}
 }

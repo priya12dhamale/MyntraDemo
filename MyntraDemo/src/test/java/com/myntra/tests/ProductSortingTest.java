@@ -10,11 +10,12 @@ import org.testng.annotations.Test;
 import com.myntra.base.BaseClass;
 import com.myntra.pages.HomePage;
 import com.myntra.pages.ProductListingPage;
+import com.myntra.utils.WaitFor;
 
 public class ProductSortingTest extends BaseClass {
 
 	@Test
-	public void verifyProductSortingLowToHigh() {
+	public void verifyProductSortingLowToHigh() throws InterruptedException {
 		HomePage home = new HomePage();
 		ProductListingPage plp = new ProductListingPage();
 
@@ -25,7 +26,8 @@ public class ProductSortingTest extends BaseClass {
 		plp.selectBrand1("H&M");
 
 		plp.selectPriceLowToHigh();
-
+		// WaitFor.visibilityOfAllElements(plp.productPrices);
+	//	Thread.sleep(2000);
 		List<Integer> actualPrices = plp.getProductPrices();
 		System.out.println("Actual Prices: " + actualPrices);
 		List<Integer> sortedPrices = new ArrayList<>(actualPrices);
@@ -64,4 +66,6 @@ public class ProductSortingTest extends BaseClass {
 
 		Assert.assertEquals(actualPrices, sortedPrices, "Products are not sorted from High to Low");
 	}
+	
+	
 }

@@ -2,17 +2,19 @@ package demo;
 
 import org.testng.annotations.Test;
 
+import com.myntra.dataprovider.DataProviderClass;
+
 public class Demo1 {
 
-	    @Test
-	    public void test1() {
+	@Test
+	public void test1() {
 
-	        System.out.println("Framework setup successful");
-	    }
-	    /*
-		 * here we are using dynamic xpath to find the category option and then click on
-		 * that option to select the category
-		 */
+		System.out.println("Framework setup successful");
+	}
+	/*
+	 * here we are using dynamic xpath to find the category option and then click on
+	 * that option to select the category
+	 */
 //		public void selectCategory(String categoryName) {
 //		    WebElement categoryOption = Keyword.driver.findElement(By.xpath("//div[contains(@class,'categories-container')]//label[contains(.,'" + categoryName + "')]"));
 //		    categoryOption.click();
@@ -21,8 +23,8 @@ public class Demo1 {
 	//
 //			Keyword.clickOnElement(categoryOption);
 //		}
-	    
-	//	
+
+	//
 //		//
 //			 * Find label inside categories-container whose text contains categoryName
 //			 */
@@ -49,7 +51,7 @@ public class Demo1 {
 //			//((JavascriptExecutor) driver).executeScript("arguments[0].click();", categoryLocator);
 //			//Keyword.WaitForSeconds(4000);
 	//
-	//	
+	//
 
 //		public void selectCategory(String categoryName) {
 //			  WebElement categoryOptin =driver.findElement By.xpath("//div[contains(@class,'categories-container')]//label[contains(.,'"
@@ -57,9 +59,16 @@ public class Demo1 {
 //		  categoryOption.click(); 
 //		  
 //		  }
-	//}
+	// }
 
 	//
 //		// public void searchbrand(String BrandName) {*/
+
+	@Test(dataProvider = "categoryData", dataProviderClass = DataProviderClass.class)
+	public void verifyCategory(String category) {
+
+		System.out.println(category);
+
+	}
 
 }

@@ -7,6 +7,9 @@
         <classes>
 
             <class name="com.myntra.tests.HomePageTests"/>
+            <class name="com.myntra.tests.SearchFunctionalityTests"/>
+             
+             
 
         </classes>
 

@@ -31,8 +31,8 @@ public class EndToEndTests extends BaseClass {
 
 		plp.selectColour1("Black");
           
-		srp.clickOnFirstProduct();
-      //	srp.clickProductByIndex(1);
+		//srp.clickOnFirstProduct();
+      srp.clickProductByIndex(1);
 		switchToNewWindow();
 
 		pdp.selectSize("30");

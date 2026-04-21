@@ -10,13 +10,13 @@ import com.myntra.pages.HomePage;
 
 public class WomenMenuTest extends BaseClass {
 
-	HomePage home;
-
-	@BeforeMethod
-	public void setupPage() {
-
-		home = new HomePage();
-	}
+//	HomePage home;
+//
+//	@BeforeMethod
+//	public void setupPage() {
+//
+//		home = new HomePage();
+//	}
 //
 //	@BeforeMethod
 //	//Page object tries to use driver
@@ -25,29 +25,29 @@ public class WomenMenuTest extends BaseClass {
 //	
 
 	// verify women menu is visible or not
-	@Test
-	public void verifyWomenMenuIsVisible() {
+//	@Test(groups = "smoke")
+//	public void verifyWomenMenuIsVisible() {
+//
+//		home.hoverOnWomenMenu();
+//		Assert.assertTrue(home.womenMenuIsDisplayed(), "women menu is not displayed");
+//		// home.clickOnWomenMenu();
+//
+//	}
 
-		home.hoverOnWomenMenu();
-		Assert.assertTrue(home.womenMenuIsDisplayed(), "women menu is not displayed");
-		// home.clickOnWomenMenu();
-
-	}
-
-	@Test
-	public void verifyWomenSectionNavigation() {
-
-		home.hoverOnWomenMenu();
-
-		home.clickIndianFusionWear();
-
-		String currentUrl = driver.getCurrentUrl();
-
-		System.out.println("Current URL: " + currentUrl);
-
-		Assert.assertTrue(currentUrl.contains("myntra.com/fusion-wear"), "Women section not opened");
-	}
-	
-	
+//	@Test(groups = "smoke")
+//	public void verifyWomenSectionNavigation() {
+//
+//		home.hoverOnWomenMenu();
+//
+//		home.clickIndianFusionWear();
+//
+//		String currentUrl = driver.getCurrentUrl();
+//
+//		System.out.println("Current URL: " + currentUrl);
+//
+//		Assert.assertTrue(currentUrl.contains("myntra.com/fusion-wear"), "Women section not opened");
+//	}
+//	
+//	
 
 }

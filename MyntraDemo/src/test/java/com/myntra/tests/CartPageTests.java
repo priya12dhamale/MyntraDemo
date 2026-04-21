@@ -3,6 +3,7 @@ package com.myntra.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.myntra.base.BaseClass;
 import com.myntra.pages.CartPage;
 import com.myntra.pages.HomePage;
 import com.myntra.pages.ProductDetailPage;
@@ -11,7 +12,7 @@ import com.myntra.pages.SearchResultPage;
 import static com.myntra.base.Keyword.*;
 import org.testng.asserts.SoftAssert;
 
-public class CartPageTests extends Test1 {
+public class CartPageTests extends BaseClass {
 
 	// Test case to verify that the product is added to the cart successfully
 
@@ -112,7 +113,7 @@ public class CartPageTests extends Test1 {
 	}
 
 	@Test
-	public void verifyApplyCouponButtonDisplayed_usingDiscountFilter() {
+	public void verifyApplyCouponButtonDisplayed() {
 
 		SoftAssert softAssert = new SoftAssert();
 
@@ -165,7 +166,7 @@ public class CartPageTests extends Test1 {
 //
 //		softAssert.assertAll();
 	}
-
+      //Negative test cases
 	@Test
 	public void verifyInvalidPincodeEntry_OnCartPage() {
 
