@@ -235,7 +235,7 @@ public class ProductListingPage {
 	    }
 	    WaitFor.elementToBeClickable(brandOptions);
 	    brandOptions.click();
-	  //  Keyword.WaitForSeconds(2000);
+	    Keyword.WaitForSeconds(2000);
 	}
 	
 	public void selectColour1(String ColourName) {
@@ -250,7 +250,7 @@ public class ProductListingPage {
 		WaitFor.elementToBeClickable(colorOptions);
 		colorOptions.click();
 		// driver.executeScript("arguments[0].click();", colorOptions);
-	//	Keyword.WaitForSeconds(2000);
+		Keyword.WaitForSeconds(2000);
 		// WaitFor.elementToBeClickable(colorOptions);
 	}
 

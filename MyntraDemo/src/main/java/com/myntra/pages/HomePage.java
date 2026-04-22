@@ -82,6 +82,10 @@ public class HomePage {
 	public boolean isWomenMenuDisplayed() {
 		return womenMenu.isDisplayed();
 	}
+	public void bagIconClick() {
+		WaitFor.elementToBeClickable(bagIcon);
+		bagIcon.click();
+	}
 
 	public void hoverOnWomenMenu() {
 		WaitFor.elementToBeClickable(womenMenu);

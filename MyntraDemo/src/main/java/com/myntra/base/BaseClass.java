@@ -13,44 +13,30 @@ import java.io.IOException;
 
 public class BaseClass {
 
-	// public static RemoteWebDriver driver;
-//	String appurl = "https://www.myntra.com/";
-
-//	@BeforeMethod
-//	public void setUp() {
-//		
-//		openBrowser("chrome");
-//		 driver = Keyword.driver;//
-//	//	driver.get(appurl);
-//		launchUrl(appurl);
-//		maximizeWindow();
-//
-//	}
-
 	@BeforeMethod
 	public void setUp() throws IOException {
 
 		// Read values from config.properties
-		String browser = "";
-		String url = "";
-
-		browser = ConfigReader.getProperties("browser");
-		url = ConfigReader.getProperties("url");
+//		String browser = "";
+//		String url = "";
+//
+//		browser = ConfigReader.getProperties("browser");
+//		url = ConfigReader.getProperties("url");
 
 		// Open browser
-		openBrowser(browser);
-
+		//openBrowser(browser);
+          openBrowser();
 		// Maximize window
-		maximizeWindow();
-
+		//maximizeWindow();
+    openUrl();
 		// Launch application/
-		launchUrl(url);
+	//	launchUrl(url);
 		// getUrl(url);
 	}
 //
-//	 @AfterMethod
-//	 public void tearDown() {
-//	 closeBrowser();
-//	 }
+//	@AfterMethod
+//	public void tearDown() {
+//		closeBrowser();
+//	}
 
 }

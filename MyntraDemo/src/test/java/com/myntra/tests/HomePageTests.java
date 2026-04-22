@@ -13,15 +13,15 @@ import static com.myntra.base.Keyword.*;
 
 public class HomePageTests extends BaseClass {
 
-	@Test(groups = "smoke")
+	@Test
 	public void verifyHomePageLoadsSuccessfully() {
 
-		driver.get(ConfigReader.getProperties("url"));
+		driver.get(ConfigReader.get("base.url"));
 		String currentUrl = driver.getCurrentUrl();
 		Assert.assertTrue(currentUrl.contains("myntra"), "Home page not loaded");
 	}
 
-	@Test(groups = "smoke")
+	@Test
 	public void verifyWomenMenuDisplayed() {
 
 		HomePage home = new HomePage();
@@ -73,7 +73,7 @@ public class HomePageTests extends BaseClass {
 				"Search did not navigate to correct PLP page");
 	}
 
-	@Test(enabled = false)
+	@Test
 	public void verifyWishlistAccessWithoutLogin() {
 
 		HomePage home = new HomePage();

@@ -66,7 +66,6 @@ public class ProductListingPageTests extends BaseClass {
 		// int before = plp.getProductCount();
 		String colour = "Black";
 		plp.selectColour1(colour);
-		// Get count after filter
 		int after = plp.getProductCount();
 //	    System.out.println("Before filter count: " + before);
 //	    System.out.println("After filter count: " + after);
@@ -161,7 +160,7 @@ public class ProductListingPageTests extends BaseClass {
 	@Test(dataProvider = "categoryData", dataProviderClass = DataProviderClass.class)
 	public void verifyCategoryFilterApplied(String category) throws InterruptedException {
 
-		driver.get(ConfigReader.getProperties("url"));
+		driver.get(ConfigReader.get("base.url"));
 
 		HomePage home = new HomePage();
 

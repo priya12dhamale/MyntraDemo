@@ -11,6 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import com.exceptions.InvalidBrowserNameExc;
+import com.myntra.utils.ConfigReader;
 import com.myntra.utils.WaitFor;
 
 public class Keyword {
@@ -20,25 +21,58 @@ public class Keyword {
 	 * method using class name and no need to create object of this class
 	 */
 	static public RemoteWebDriver driver;
+	static String browser = ConfigReader.get("browser");
 
-	public static void openBrowser(String browserName) {
-		if (browserName.equalsIgnoreCase("chrome")) {
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--disable-notifications");// disable the notification pop up chrome browser
-			driver = new ChromeDriver(options);
+//	public static void openBrowser(String browserName) {
+//		if (browserName.equalsIgnoreCase("chrome")) {
+//			ChromeOptions options = new ChromeOptions();
+//			options.addArguments("--disable-notifications");// disable the notification pop up chrome browser
+//			driver = new ChromeDriver(options);
+//
+//		} else if (browserName.equalsIgnoreCase("firefox")) {
+//			driver = new FirefoxDriver();
+//		} else if (browserName.equalsIgnoreCase("edge")) {
+//			driver = new EdgeDriver();
+//		} else {
+//
+//			throw new InvalidBrowserNameExc();
+//		}
+//	}
+	
+	public static void openBrowser() {
 
-		} else if (browserName.equalsIgnoreCase("firefox")) {
-			driver = new FirefoxDriver();
-		} else if (browserName.equalsIgnoreCase("edge")) {
-			driver = new EdgeDriver();
-		} else {
+	    if (browser.equalsIgnoreCase("chrome")) {
 
-			throw new InvalidBrowserNameExc();
-		}
+	        ChromeOptions options = new ChromeOptions();
+	        options.addArguments("--disable-notifications");
+
+	        driver = new ChromeDriver(options);
+	    }
+
+	    else if (browser.equalsIgnoreCase("firefox")) {
+	        driver = new FirefoxDriver();
+	    }
+
+	    else if (browser.equalsIgnoreCase("edge")) {
+	        driver = new EdgeDriver();
+	    }
+
+	    else {
+	        throw new InvalidBrowserNameExc();
+	    }
+
+	    driver.manage().window().maximize();
 	}
 
-	public static void launchUrl(String url) {
-		driver.get(url);
+//	public static void launchUrl(String url) {
+//		driver.get(url);
+//	}
+	
+	public static void openUrl() {
+
+	    String url = ConfigReader.get("base.url");
+
+	    driver.get(url);
 	}
 
 	/*
