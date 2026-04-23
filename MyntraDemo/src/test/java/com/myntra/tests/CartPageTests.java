@@ -1,15 +1,17 @@
 package com.myntra.tests;
 
+import static com.myntra.basetest.KeyWord.*;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.myntra.base.BaseClass;
+import com.myntra.basetest.BaseClass;
 import com.myntra.pages.CartPage;
 import com.myntra.pages.HomePage;
 import com.myntra.pages.ProductDetailPage;
 import com.myntra.pages.ProductListingPage;
 import com.myntra.pages.SearchResultPage;
-import static com.myntra.base.Keyword.*;
+
 import org.testng.asserts.SoftAssert;
 
 public class CartPageTests extends BaseClass {
@@ -33,7 +35,7 @@ public class CartPageTests extends BaseClass {
 		home.clickIndianFusionWear();
 
 		// Step 3: Select category
-		plp.selectCategory1("Kurtas");
+		plp.selectCategory("Kurtas");
 
 		// Step 4: Click first product
 		srp.clickProductByIndex(1);
@@ -56,7 +58,7 @@ public class CartPageTests extends BaseClass {
 		home.hoverOnWomenMenu();
 		home.clickIndianFusionWear();
 		ProductListingPage plp = new ProductListingPage();
-		plp.selectCategory1("Sarees");
+		plp.selectCategory("Sarees");
 		SearchResultPage srp = new SearchResultPage();
 		srp.clickProductByIndex(2);
 		switchToNewWindow();
@@ -83,8 +85,8 @@ public class CartPageTests extends BaseClass {
 		home.clickIndianFusionWear();
 
 		ProductListingPage plp = new ProductListingPage();
-		plp.selectCategory1("Dress Material");
-		plp.selectColour1("Pink");
+		plp.selectCategory("Dress Material");
+		plp.selectColour("Pink");
 
 		SearchResultPage srp = new SearchResultPage();
 		srp.clickProductByIndex(1);
@@ -122,7 +124,7 @@ public class CartPageTests extends BaseClass {
 		home.clickIndianFusionWear();
 
 		ProductListingPage plp = new ProductListingPage();
-		plp.selectCategory1("Sarees");
+		plp.selectCategory("Sarees");
 		// Apply Discount filter
 		plp.selectDiscount("40% and above");
 
@@ -150,7 +152,7 @@ public class CartPageTests extends BaseClass {
 		home.hoverOnWomenMenu();
 		home.clickIndianFusionWear();
 		ProductListingPage plp = new ProductListingPage();
-		plp.selectCategory1("Sarees");
+		plp.selectCategory("Sarees");
 		SearchResultPage srp = new SearchResultPage();
 		srp.clickProductByIndex(1);
 		switchToNewWindow();
@@ -179,7 +181,7 @@ public class CartPageTests extends BaseClass {
 		home.hoverOnWomenMenu();
 		home.clickIndianFusionWear();
 
-		plp.selectCategory1("Sarees");
+		plp.selectCategory("Sarees");
 
 		srp.clickProductByIndex(1);
 

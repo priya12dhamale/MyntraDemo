@@ -7,7 +7,7 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.myntra.base.BaseClass;
+import com.myntra.basetest.BaseClass;
 import com.myntra.pages.HomePage;
 import com.myntra.pages.ProductListingPage;
 import com.myntra.utils.WaitFor;
@@ -22,8 +22,8 @@ public class ProductSortingTest extends BaseClass {
 		home.hoverOnWomenMenu();
 		home.clickWesternWear();
 
-		plp.selectCategory1("Top");
-		plp.selectBrand1("H&M");
+		plp.selectCategory("Top");
+		plp.selectBrand("H&M");
 
 		plp.selectPriceLowToHigh();
 		// WaitFor.visibilityOfAllElements(plp.productPrices);
@@ -48,8 +48,8 @@ public class ProductSortingTest extends BaseClass {
 		home.hoverOnWomenMenu();
 		home.clickWesternWear();
 
-		plp.selectCategory1("Top");
-		plp.selectBrand1("Roadster");
+		plp.selectCategory("Top");
+		plp.selectBrand("Roadster");
 
 		plp.selectPriceHighToLow();
 		Thread.sleep(2000);

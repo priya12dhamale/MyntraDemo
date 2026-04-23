@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.myntra.base.Keyword;
+import com.myntra.basetest.KeyWord;
 import com.myntra.utils.WaitFor;
 
 public class CartPage {
@@ -49,7 +49,7 @@ public class CartPage {
 	
 	{
 
-		PageFactory.initElements(Keyword.driver, this);
+		PageFactory.initElements(KeyWord.driver, this);
 	}
 	
 	public boolean isProductDispayed() {

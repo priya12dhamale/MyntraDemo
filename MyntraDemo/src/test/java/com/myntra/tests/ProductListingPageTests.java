@@ -1,16 +1,20 @@
 package com.myntra.tests;
 
+import static com.myntra.basetest.KeyWord.*;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import static com.myntra.base.Keyword.*;
-import com.myntra.base.BaseClass;
+import com.myntra.basetest.BaseClass;
 import com.myntra.dataprovider.DataProviderClass;
+import com.myntra.hooks.Hooks;
 import com.myntra.pages.HomePage;
 import com.myntra.pages.ProductListingPage;
 import com.myntra.pages.SearchPage;
@@ -21,7 +25,7 @@ import com.myntra.utils.WaitFor;
 public class ProductListingPageTests extends BaseClass {
 
 //	HomePage home = new HomePage();
-
+	private static final Logger LOG = LogManager.getLogger(ProductListingPageTests.class);
 	@Test
 	public void verifyProductListingPageDisplayed() {
 
@@ -48,7 +52,7 @@ public class ProductListingPageTests extends BaseClass {
 
 		int productCount = plp.getProductCount();
 
-		System.out.println("Product Count: " + productCount);
+		LOG.info("Product Count: " + productCount);
 
 		Assert.assertTrue(productCount == 50, "No products displayed on Product Listing Page");
 		// Assert.assertTrue(productCount > 0, "No products displayed on Product Listing
@@ -65,7 +69,7 @@ public class ProductListingPageTests extends BaseClass {
 
 		// int before = plp.getProductCount();
 		String colour = "Black";
-		plp.selectColour1(colour);
+		plp.selectColour(colour);
 		int after = plp.getProductCount();
 //	    System.out.println("Before filter count: " + before);
 //	    System.out.println("After filter count: " + after);
@@ -84,7 +88,7 @@ public class ProductListingPageTests extends BaseClass {
 
 		int countBefore = plp.getProductCount();
 
-		plp.selectCategory1("Sarees");
+		plp.selectCategory("Sarees");
 
 		int countAfter = plp.getProductCount();
 
@@ -112,7 +116,7 @@ public class ProductListingPageTests extends BaseClass {
 
 		String currentUrl = driver.getCurrentUrl();
 
-		System.out.println("Current URL: " + currentUrl);
+		LOG.info("Current URL: " + currentUrl);
 
 		Assert.assertTrue(currentUrl.contains("/buy"), "Product Detail Page not opened");
 	}
@@ -127,15 +131,15 @@ public class ProductListingPageTests extends BaseClass {
 		ProductListingPage plp = new ProductListingPage();
 
 		// Apply filters
-		plp.selectBrand1("Biba");
-		plp.selectColour1("Black");
+		plp.selectBrand("Biba");
+		plp.selectColour("Black");
 
 		// Clear all filters
 		plp.clearAllFilters();
 
 		int productCountAfterClearingFilters = plp.getProductCount();
 
-		System.out.println("product count after clearing filters: " + productCountAfterClearingFilters);
+		LOG.info("product count after clearing filters: " + productCountAfterClearingFilters);
 
 		Assert.assertTrue(productCountAfterClearingFilters > 0,
 				"after click on clear filter no products are displayed ");
@@ -169,11 +173,11 @@ public class ProductListingPageTests extends BaseClass {
 
 		ProductListingPage plp = new ProductListingPage();
 
-		plp.selectCategory1(category);
+		plp.selectCategory(category);
 
 		String currentUrl = driver.getCurrentUrl();
 
-		System.out.println("URL: " + currentUrl);
+		LOG.info("URL: " + currentUrl);
 
 		String encodedCategory = category.replace(" ", "%20");
 
@@ -190,21 +194,21 @@ public class ProductListingPageTests extends BaseClass {
 		home.hoverOnWomenMenu();
 		home.clickWesternWear();
 
-		plp.selectCategory1("Top");
-		plp.selectBrand1("Roadster");
+		plp.selectCategory("Top");
+		plp.selectBrand("Roadster");
 
 		plp.selectPriceHighToLow();
 		Thread.sleep(2000);
 		// WaitFor.visibilityOfAllElements(productPrices);
 		List<Integer> actualPrices = plp.getProductPrices();
 
-		System.out.println("Actual Prices: " + actualPrices);
+		LOG.info("Actual Prices: " + actualPrices);
 
 		List<Integer> sortedPrices = new ArrayList<>(actualPrices);
 
 		Collections.sort(sortedPrices, Collections.reverseOrder());
 
-		System.out.println("Sorted Prices: " + sortedPrices);
+		LOG.info("Sorted Prices: " + sortedPrices);
 
 		Assert.assertEquals(actualPrices, sortedPrices, "Products are not sorted from High to Low");
 	}
@@ -220,7 +224,7 @@ public class ProductListingPageTests extends BaseClass {
 
 		int beforeScroll = plp.getProductCount();
 
-		System.out.println("Before Scroll: " + beforeScroll);
+		LOG.info("Before Scroll: " + beforeScroll);
 
 		plp.scrollToLastProduct();
 
@@ -229,7 +233,7 @@ public class ProductListingPageTests extends BaseClass {
 
 		int afterScroll = plp.getProductCount();
 
-		System.out.println("After Scroll: " + afterScroll);
+		LOG.info("After Scroll: " + afterScroll);
 
 		Assert.assertTrue(afterScroll >= beforeScroll, "Products did not load after scrolling");
 	}
@@ -246,15 +250,15 @@ public class ProductListingPageTests extends BaseClass {
 		// Step 1 — Get initial product count
 		int initialCount = plp.getProductCount();
 
-		System.out.println("Initial Count: " + initialCount);
+		LOG.info("Initial Count: " + initialCount);
 
 		// Step 2 — Apply filters
-		plp.selectBrand1("Biba");
-		plp.selectColour1("Black");
+		plp.selectBrand("Biba");
+		plp.selectColour("Black");
 
 		int filteredCount = plp.getProductCount();
 
-		System.out.println("Filtered Count: " + filteredCount);
+		LOG.info("Filtered Count: " + filteredCount);
 
 		// Step 3 — Verify filter affected product list
 		Assert.assertTrue(filteredCount <= initialCount, "Filters did not change product list");
@@ -264,7 +268,7 @@ public class ProductListingPageTests extends BaseClass {
 
 		int afterClearCount = plp.getProductCount();
 
-		System.out.println("After Clear Count: " + afterClearCount);
+		LOG.info("After Clear Count: " + afterClearCount);
 
 		// Step 5 — Verify product list restored
 		Assert.assertTrue(afterClearCount >= filteredCount, "Product list not restored after clearing filters");
@@ -279,11 +283,11 @@ public class ProductListingPageTests extends BaseClass {
 		home.hoverOnWomenMenu();
 		home.clickIndianFusionWear();
 
-		plp.selectBrand1("Biba");
+		plp.selectBrand("Biba");
 
 		boolean isChipDisplayed = plp.isFilterChipDisplayed("Biba");
 
-		System.out.println("Brand chip displayed: " + isChipDisplayed);
+		LOG.info("Brand chip displayed: " + isChipDisplayed);
 
 		Assert.assertTrue(isChipDisplayed, "Brand filter chip not displayed");
 	}
@@ -303,7 +307,7 @@ public class ProductListingPageTests extends BaseClass {
 
 		int productCountBefore = plp.getProductCount();
 
-		plp.selectBrand1("NonExistingBrand");
+		plp.selectBrand("NonExistingBrand");
 
 		int productCountAfter = plp.getProductCount();
 
@@ -312,5 +316,7 @@ public class ProductListingPageTests extends BaseClass {
 
 		softAssert.assertAll();
 	}
+	
+	
 
 }

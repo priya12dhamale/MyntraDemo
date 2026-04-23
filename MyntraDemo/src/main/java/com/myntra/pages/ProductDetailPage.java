@@ -1,5 +1,7 @@
 package com.myntra.pages;
 
+import static com.myntra.basetest.KeyWord.*;
+
 import java.time.Duration;
 import java.util.List;
 
@@ -10,8 +12,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.myntra.base.BaseClass;
-import com.myntra.base.Keyword;
+import com.myntra.basetest.BaseClass;
+import com.myntra.basetest.KeyWord;
 import com.myntra.utils.WaitFor;
 
 public class ProductDetailPage extends BaseClass {
@@ -65,17 +67,67 @@ public class ProductDetailPage extends BaseClass {
 
 	@FindBy(xpath = "//span[contains(text(),'WISHLIST')]")
 	WebElement wishlistButton;
+	@FindBy(xpath = "//input[@placeholder=\"Enter pincode\"]")
+	WebElement pincodeTextbox;
+
+	@FindBy(xpath = "//input[@value=\"Check\"]")
+	WebElement checkButton;
+
+//	@FindBy(xpath = "//div[contains(text(),'Please enter a valid pincode')]")
+//	WebElement invalidPincodeErrorMessage;
+	@FindBy(xpath="//p[@class=\"pincode-error pincode-enterPincode\"]")
+	WebElement invalidPinMessage ;
+	
 
 	public ProductDetailPage() {
-		PageFactory.initElements(Keyword.driver, this);//
+		PageFactory.initElements(KeyWord.driver, this);//
 	}
 
-	public void selectSize1() {
-		WaitFor.elementToBeVisible(size);//
-		WaitFor.elementToBeClickable(size);//
-		size.click();
-	}
+//	public void selectSize1() {
+//		WaitFor.elementToBeVisible(size);//
+//		WaitFor.elementToBeClickable(size);//
+//		size.click();
+//	}
+	public void enterPincode(String pin) {
 
+	    WaitFor.elementToBeVisible(pincodeTextbox);
+	    WaitFor.elementToBeClickable(pincodeTextbox);
+
+	    pincodeTextbox.clear();
+	    pincodeTextbox.sendKeys(pin);
+	}
+	public void clickOnCheckButton() {
+
+	    WaitFor.elementToBeVisible(checkButton);
+	    WaitFor.elementToBeClickable(checkButton);
+
+	    checkButton.click();
+	}
+	public String getInvalidPinMessage() {
+
+	    WaitFor.elementToBeVisible(invalidPinMessage);
+
+	    return invalidPinMessage.getText();
+	}
+//	public String getInvalidPinMessage() {
+//		WaitFor.visibilityOfelement(invalidPinMessage);
+//		return invalidPinMessage.getText();
+//		
+//	}
+	public boolean isInvalidPinMessageDisplayed() {
+
+	    try {
+
+	        Thread.sleep(1000); // small wait to catch popup
+
+	        return invalidPinMessage.isDisplayed();
+
+	    } catch (Exception e) {
+
+	        return false;
+	    }
+	}
+	
 	public boolean isSizeSelectionSuccessful() {
 
 		try {
@@ -162,7 +214,7 @@ public class ProductDetailPage extends BaseClass {
 		WaitFor.elementToBeVisible(addToBagBtn);//
 		WaitFor.elementToBeClickable(addToBagBtn);//
 		addToBagBtn.click();
-		Keyword.WaitForSeconds(4000);
+		KeyWord.WaitForSeconds(4000);
 	}
 
 	public String getProductName() {
@@ -281,4 +333,6 @@ public class ProductDetailPage extends BaseClass {
 
 		wishlistButton.click();
 	}
+
+
 }

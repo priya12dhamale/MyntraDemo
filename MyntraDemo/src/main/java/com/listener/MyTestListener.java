@@ -4,8 +4,7 @@ import org.testng.ITestListener;
 
 import org.testng.ITestResult;
 
-
-import com.myntra.base.Keyword;
+import com.myntra.basetest.KeyWord;
 import com.myntra.utils.Screenshot;
 
 
@@ -15,11 +14,7 @@ public  class MyTestListener implements ITestListener {
 	public void onTestFailure(ITestResult result) {
 		//System.out.println("Test Failed: " + result.getName());
 		String testName = result.getName();
-		Screenshot.captureScreenshot(Keyword.driver, testName); //base class remove keywordclass*
+		Screenshot.captureScreenshot(KeyWord.driver, testName); 
 	}
-//	@Override
-//	public void onTestSuccess(ITestResult result) {
-//	System.out.println("Test Passed: " + result.getName());
-//		
-//	}
+
 }

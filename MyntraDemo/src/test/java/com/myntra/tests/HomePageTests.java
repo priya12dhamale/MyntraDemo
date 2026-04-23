@@ -1,16 +1,19 @@
 package com.myntra.tests;
 
+import static com.myntra.basetest.KeyWord.*;
+
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import com.myntra.base.BaseClass;
+import com.listener.MyTestListener;
+import com.myntra.basetest.BaseClass;
 import com.myntra.pages.HomePage;
 import com.myntra.pages.ProductListingPage;
 import com.myntra.pages.SearchPage;
 import com.myntra.pages.SearchResultPage;
 import com.myntra.utils.ConfigReader;
-import static com.myntra.base.Keyword.*;
-
+@Listeners(MyTestListener.class)
 public class HomePageTests extends BaseClass {
 
 	@Test

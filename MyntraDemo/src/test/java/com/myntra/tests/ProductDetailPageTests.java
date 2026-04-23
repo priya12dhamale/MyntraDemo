@@ -1,18 +1,19 @@
 package com.myntra.tests;
 
+import static com.myntra.basetest.KeyWord.*;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.myntra.base.BaseClass;
+import com.myntra.basetest.BaseClass;
 import com.myntra.pages.HomePage;
 import com.myntra.pages.ProductDetailPage;
 import com.myntra.pages.ProductListingPage;
 import com.myntra.pages.SearchResultPage;
-import static com.myntra.base.Keyword.*;
 
 public class ProductDetailPageTests extends BaseClass {
 
-	@Test(groups = "smoke")
+	@Test
 	public void verifyProductDetailPageOpens() {
 
 		HomePage home = new HomePage();
@@ -21,9 +22,8 @@ public class ProductDetailPageTests extends BaseClass {
 		home.clickIndianFusionWear();
 
 		SearchResultPage srp = new SearchResultPage();
-		// Step 2 — Click Product
-		srp.clickProductByIndex(3);
 
+		srp.clickProductByIndex(3);
 		switchToNewWindow();
 
 		String currentUrl = driver.getCurrentUrl();
@@ -33,7 +33,7 @@ public class ProductDetailPageTests extends BaseClass {
 		Assert.assertTrue(currentUrl.contains("buy"), "Product Detail Page not opened");
 	}
 
-	@Test(groups = "regression")
+	@Test
 	public void verifySameProductDisplayedOnPDP() {
 
 		HomePage home = new HomePage();
@@ -43,13 +43,13 @@ public class ProductDetailPageTests extends BaseClass {
 
 		SearchResultPage srp = new SearchResultPage();
 
-		int index = 2;
+		//int index = 2;
 
-		String brandPLP = srp.getProductBrandByIndex(index);
+		String brandPLP = srp.getProductBrandByIndex(2);
 
 		System.out.println("Brand on PLP: " + brandPLP);
 
-		srp.clickProductByIndex(index);
+		srp.clickProductByIndex(2);
 
 		switchToNewWindow();
 
@@ -118,7 +118,7 @@ public class ProductDetailPageTests extends BaseClass {
 		home.clickIndianFusionWear();
 
 		ProductListingPage plp = new ProductListingPage();
-		plp.selectCategory1("Kurtas");
+		plp.selectCategory("Kurtas");
 
 		SearchResultPage srp = new SearchResultPage();
 
@@ -130,13 +130,10 @@ public class ProductDetailPageTests extends BaseClass {
 
 		String size = "M";
 
-		// Step 1 — Select size
 		pdp.selectSize(size);
 
-		// Step 2 — Click Add to Bag
 		pdp.clickOnAddToBag();
 
-		// Step 3 Validate
 		boolean isSelected = pdp.isSizeSelectionSuccessful();
 
 		System.out.println("Selected size: " + size);
@@ -153,7 +150,7 @@ public class ProductDetailPageTests extends BaseClass {
 		home.clickIndianFusionWear();
 
 		ProductListingPage plp = new ProductListingPage();
-		plp.selectCategory1("Jeggings");
+		plp.selectCategory("Jeggings");
 
 		SearchResultPage srp = new SearchResultPage();
 
@@ -165,18 +162,14 @@ public class ProductDetailPageTests extends BaseClass {
 
 		String size = "40";
 
-		// Step 1 — Select size
 		pdp.selectSize(size);
 
-		// Step 2 — Click Add to Bag
 		pdp.clickOnAddToBag();
 
-		// Step 3 — Verify product added
 		boolean isAdded = pdp.isProductAddedToBag();
 
 		System.out.println("Product added: " + isAdded);
 
-		// Assert.assertTrue(isAdded, "Product was not added to bag");
 		Assert.assertTrue(pdp.isGoToBagButtonDisplayed(), "Product was not added to bag");
 	}
 
@@ -189,7 +182,7 @@ public class ProductDetailPageTests extends BaseClass {
 		home.clickIndianFusionWear();
 
 		ProductListingPage plp = new ProductListingPage();
-		plp.selectCategory1("Kurtas");
+		plp.selectCategory("Kurtas");
 
 		SearchResultPage srp = new SearchResultPage();
 
@@ -199,7 +192,6 @@ public class ProductDetailPageTests extends BaseClass {
 
 		ProductDetailPage pdp = new ProductDetailPage();
 
-		// FIX: click from PDP
 		pdp.clickOnWishlist();
 		boolean isLoginDisplayed = home.LoginOptionDisplayeclickingWishlist();
 
@@ -215,17 +207,14 @@ public class ProductDetailPageTests extends BaseClass {
 		HomePage home = new HomePage();
 		ProductListingPage plp = new ProductListingPage();
 		SearchResultPage srp = new SearchResultPage();
-		// ProductDetailPage pdp = new ProductDetailPage();
+
 		home.hoverOnWomenMenu();
 		home.clickIndianFusionWear();
 
-		plp.selectCategory1("Kurta Sets");
+		plp.selectCategory("Kurta Sets");
 
-		plp.selectColour1("Yellow");
+		plp.selectColour("Yellow");
 
-//	srp.clickProductByIndex(2);
-		// srp.clickProduct(2);
-		// srp.clickOnFirstProduct();
 		srp.clickProductByIndex(1);
 		switchToNewWindow();
 
@@ -237,6 +226,33 @@ public class ProductDetailPageTests extends BaseClass {
 		System.out.println(actuallMsg);
 		String expectedMsg = "Please select a size";
 		Assert.assertEquals(actuallMsg, expectedMsg, "Size error message is not displayed correctly");
+	}
+
+	@Test
+	public void verifyInvalidPincodeErrorMessage() {
+
+		HomePage home = new HomePage();
+		ProductListingPage plp = new ProductListingPage();
+		ProductDetailPage pdp = new ProductDetailPage();
+		SearchResultPage srp = new SearchResultPage();
+		// Step 1: Navigate to PDP
+		home.hoverOnWomenMenu();
+		home.clickIndianFusionWear();
+		srp.clickProductByIndex(1);
+		switchToNewWindow();
+		// Step 2: Enter invalid pincode
+		pdp.enterPincode("123");
+
+		// Step 3: Click on Check button
+		pdp.clickOnCheckButton();
+		WaitForSeconds(1);
+
+		// Step 4: Get error message
+		// String actualError = pdp.getInvalidPinMessage();
+
+		Assert.assertTrue(pdp.isInvalidPinMessageDisplayed(), "Invalid pincode error message should be displayed");
+//		Assert.assertEquals(actualError, "Please enter a valid pincode",
+//				"Error message is not displayed for invalid pincode");
 	}
 
 }

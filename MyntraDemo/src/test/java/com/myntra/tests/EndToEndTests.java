@@ -1,15 +1,17 @@
 package com.myntra.tests;
 
+import static com.myntra.basetest.KeyWord.*;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import com.myntra.base.BaseClass;
-import com.myntra.base.Keyword;
+
+import com.myntra.basetest.BaseClass;
+import com.myntra.basetest.KeyWord;
 import com.myntra.pages.CartPage;
 import com.myntra.pages.HomePage;
 import com.myntra.pages.ProductDetailPage;
 import com.myntra.pages.ProductListingPage;
 import com.myntra.pages.SearchResultPage;
-import static com.myntra.base.Keyword.*;
 
 public class EndToEndTests extends BaseClass {
 
@@ -25,11 +27,11 @@ public class EndToEndTests extends BaseClass {
 		home.hoverOnWomenMenu();
 		home.clickWesternWear();
 
-		plp.selectCategory1("Jeans");
+		plp.selectCategory("Jeans");
 
-		plp.selectBrand1("Roadster");
+		plp.selectBrand("Roadster");
 
-		plp.selectColour1("Black");
+		plp.selectColour("Black");
           
 		//srp.clickOnFirstProduct();
       srp.clickProductByIndex(1);

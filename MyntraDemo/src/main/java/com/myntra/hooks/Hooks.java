@@ -1,6 +1,7 @@
 package com.myntra.hooks;
 
-import static com.myntra.base.Keyword.*;
+import static com.myntra.basetest.KeyWord.*;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import io.cucumber.java.After;
@@ -30,9 +31,9 @@ public class Hooks {
 		openUrl();
 	}
 	
-	@After
-	public void tearDown() {
-		closeBrowser();
-		LOG.info("Driver is Quit successfully....!");
-	}
+//	@After
+//	public void tearDown() {
+//		closeBrowser();
+//		LOG.info("Driver is Quit successfully....!");
+//	}
 }

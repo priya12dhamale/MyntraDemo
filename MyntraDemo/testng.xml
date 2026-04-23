@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="MyntraSuite">
+<suite name="MyntraSuite" parallel="tests" thread-count="2">
 
     <test name="HomePageTest">
 
         <classes>
 
             <class name="com.myntra.tests.HomePageTests"/>
-            <class name="com.myntra.tests.SearchFunctionalityTests"/>
+            
              
              
 

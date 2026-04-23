@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.myntra.base.Keyword;
+import com.myntra.basetest.KeyWord;
 
 public class WaitFor {
 	/*
@@ -22,7 +22,7 @@ public class WaitFor {
 
 	static {
 
-		wait = new WebDriverWait(Keyword.driver, Duration.ofSeconds(30));
+		wait = new WebDriverWait(KeyWord.driver, Duration.ofSeconds(30));
 
 		wait.pollingEvery(Duration.ofMillis(500));
 		wait.ignoring(NoSuchElementException.class);

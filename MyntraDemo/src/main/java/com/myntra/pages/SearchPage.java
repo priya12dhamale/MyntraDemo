@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.myntra.base.Keyword;
+import com.myntra.basetest.KeyWord;
 import com.myntra.utils.WaitFor;
 
 //handeling search box and search product functionality
@@ -24,7 +24,7 @@ public class SearchPage {
 	List<WebElement> productcards;
 
 	{
-		PageFactory.initElements(Keyword.driver, this); // initialization of page factory
+		PageFactory.initElements(KeyWord.driver, this); // initialization of page factory
 
 	}
 
@@ -45,21 +45,21 @@ public class SearchPage {
 	}
 
 	// search production using suggestion clicking on suggestion
-	public void searchProductUsingSuggestions(String products) {
-		WaitFor.elementToBeVisible(searchBox);
-		searchBox.sendKeys(products);
-		WaitFor.visibilityOfElements(suggestions);
-
-		for (WebElement option : suggestions) {
-			// we can find any product using suggestion by using contains method
-			if (option.getText().toLowerCase().contains(products.toLowerCase())) {
-
-				option.click();
-				break;
-			}
-		}
-
-	}
+//	public void searchProductUsingSuggestions(String products) {
+//		WaitFor.elementToBeVisible(searchBox);
+//		searchBox.sendKeys(products);
+//		WaitFor.visibilityOfElements(suggestions);
+//
+//		for (WebElement option : suggestions) {
+//			// we can find any product using suggestion by using contains method
+//			if (option.getText().toLowerCase().contains(products.toLowerCase())) {
+//
+//				option.click();
+//				break;
+//			}
+//		}
+//
+//	}
 
 	//
 //	public boolean searchResultsAreDisplayed() {

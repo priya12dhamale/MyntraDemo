@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.myntra.base.Keyword;
+import com.myntra.basetest.KeyWord;
 import com.myntra.utils.WaitFor;
 
 public class HomePage {
@@ -61,7 +61,7 @@ public class HomePage {
 
 	public HomePage() {
 
-		PageFactory.initElements(Keyword.driver, this); // initialization of page factory
+		PageFactory.initElements(KeyWord.driver, this); // initialization of page factory
 	}
 
 	public boolean myntaraLogoIsDisplayed() {
@@ -89,7 +89,7 @@ public class HomePage {
 
 	public void hoverOnWomenMenu() {
 		WaitFor.elementToBeClickable(womenMenu);
-		Keyword.hover(womenMenu);
+		KeyWord.hover(womenMenu);
 	}
 	// creating the method to check the profile icon is displayed or not we using
 	// wait for class to wait for
@@ -138,6 +138,10 @@ public class HomePage {
 		WaitFor.elementToBeVisible(searchBox);
 		searchBox.sendKeys(product);
 		searchBox.sendKeys(Keys.ENTER);
+	}
+	public void clickWishlistIcon() {
+
+		wishlist.click();
 	}
 	
 	public boolean searchResultsAreDisplayed() {

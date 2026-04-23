@@ -13,12 +13,12 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.myntra.base.Keyword;
+import com.myntra.basetest.KeyWord;
 import com.myntra.utils.WaitFor;
 
 public class SearchResultPage {
 	
-	RemoteWebDriver driver = Keyword.driver;
+	RemoteWebDriver driver = KeyWord.driver;
 
 	@FindBy(xpath = "(//li[contains(@class,'product-base')])[1]")
 	WebElement firstProduct;
@@ -47,7 +47,7 @@ public class SearchResultPage {
 	 */
 
 	{
-		PageFactory.initElements(Keyword.driver, this);
+		PageFactory.initElements(KeyWord.driver, this);
 	}
 
 	public void clickOnFirstProduct1() {
@@ -97,7 +97,7 @@ public class SearchResultPage {
         	  
         	  WaitFor.visibilityOfAllElements(productCards);
         	  
-        	  Keyword.clickOn(productCards.get(index));
+        	  KeyWord.clickOn(productCards.get(index));
           }
           
 //          public String getProductNameByIndex(int index) {

@@ -1,11 +1,13 @@
 package com.myntra.tests;
 
+import static com.myntra.basetest.KeyWord.*;
+
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import static com.myntra.base.Keyword.*;
-import com.myntra.base.BaseClass;
-import com.myntra.base.Keyword;
+
+import com.myntra.basetest.BaseClass;
+import com.myntra.basetest.KeyWord;
 import com.myntra.pages.HomePage;
 
 public class WomenMenuTest extends BaseClass {
