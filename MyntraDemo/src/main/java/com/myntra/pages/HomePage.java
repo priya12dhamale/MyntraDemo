@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.myntra.basetest.KeyWord;
+import com.myntra.base.KeyWord;
 import com.myntra.utils.WaitFor;
 
 public class HomePage {
@@ -92,7 +92,6 @@ public class HomePage {
 		KeyWord.hover(womenMenu);
 	}
 	// creating the method to check the profile icon is displayed or not we using
-	// wait for class to wait for
 	public boolean profileIconIsDisplayed() {
 		WaitFor.elementToBeVisible(profileIcon);
     	return profileIcon.isDisplayed();

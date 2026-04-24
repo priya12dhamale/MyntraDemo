@@ -1,13 +1,16 @@
 package com.myntra.stepdefinitions;
 
+import static com.myntra.base.KeyWord.*;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 
 import com.myntra.pages.HomePage;
 import com.myntra.pages.ProductDetailPage;
+import com.myntra.pages.ProductListingPage;
 import com.myntra.pages.SearchResultPage;
-import static com.myntra.basetest.KeyWord.*;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -26,7 +29,7 @@ public class ProductDetailPageSteps {
 	}
 
 	@When("user clicks on the third product")
-	public void userClicksOnThirdProduct() {
+	public void ClicksOnThirdProduct() {
 
 		SearchResultPage srp = new SearchResultPage();
 		srp.clickProductByIndex(3);
@@ -49,7 +52,7 @@ public class ProductDetailPageSteps {
 //	    home.clickIndianFusionWear();
 //	}
 	@When("user captures the brand of the second product on PLP")
-	public void userCapturesBrandFromPLP() {
+	public void CapturesBrandFromPLP() {
 
 		SearchResultPage srp = new SearchResultPage();
 
@@ -59,7 +62,7 @@ public class ProductDetailPageSteps {
 	}
 
 	@When("user clicks on the second product")
-	public void userClicksSecondProduct() {
+	public void ClicksSecondProduct() {
 
 		SearchResultPage srp = new SearchResultPage();
 
@@ -78,5 +81,140 @@ public class ProductDetailPageSteps {
 		LOG.info("Brand on PDP: " + brandPDP);
 
 		Assert.assertEquals(brandPDP, brandPLP, "Different product brand displayed on PDP");
+	}
+
+	@Given("user navigates to Women Indian Fusion Wear category")
+	public void userIsOnIndianFusionWear() {
+
+		HomePage home = new HomePage();
+
+		home.hoverOnWomenMenu();
+		home.clickIndianFusionWear();
+	}
+
+	@When("user clicks on the first product from search results")
+	public void clicksOnTheFirstProductFromSearchResults() {
+
+		SearchResultPage srp = new SearchResultPage();
+
+		srp.clickProductByIndex(1);
+
+		switchToNewWindow();
+	}
+
+	@Then("product price should be displayed on Product Detail Page")
+	public void productPriceShouldBeDisplayedOnPdp() {
+
+		ProductDetailPage pdp = new ProductDetailPage();
+
+		boolean isPriceDisplayed = pdp.isProductPriceDisplayed();
+
+		System.out.println("Price displayed: " + isPriceDisplayed);
+
+		Assert.assertTrue(isPriceDisplayed, "Product price is not displayed on PDP");
+	}
+
+	@Then("different size options should be displayed on Product Detail Page")
+	public void sizeOptionsShouldBeDisplayedOnPdp() {
+
+		ProductDetailPage pdp = new ProductDetailPage();
+
+		boolean sizesDisplayed = pdp.areSizeOptionsDisplayed();
+
+		System.out.println("Number of sizes: " + pdp.getSizeOptionsCount());
+
+		Assert.assertTrue(sizesDisplayed, "Size options are not displayed on PDP");
+	}
+
+	@Given("user selects category {string}")
+	public void selectCategoryFromFilter(String category) {
+
+		ProductListingPage plp = new ProductListingPage();
+
+		plp.selectCategory("Kurtas");
+	}
+
+	@When("user clicks the first product from search results")
+	public void clickFirstProductFromSearchResults() {
+
+		SearchResultPage srp = new SearchResultPage();
+
+		srp.clickProductByIndex(1);
+
+		switchToNewWindow();
+	}
+
+	@When("user selects size {string}")
+	public void selectSizeOnProduct(String size) {
+
+		ProductDetailPage pdp = new ProductDetailPage();
+
+		pdp.selectSize("M");
+	}
+
+	@When("user clicks on Add to Bag button")
+	public void clickAddToBagButton() {
+
+		ProductDetailPage pdp = new ProductDetailPage();
+
+		pdp.clickOnAddToBag();
+	}
+
+	@Then("size selection should be successful")
+	public void sizeSelectionShouldBeSuccessful() {
+
+		ProductDetailPage pdp = new ProductDetailPage();
+
+		boolean isSelected = pdp.isSizeSelectionSuccessful();
+
+		System.out.println("Size selection successful: " + isSelected);
+
+		Assert.assertTrue(isSelected, "Size was not selected");
+	}
+
+	@Given("user select category {string}")
+	public void selectCategoryFromTheFilter(String category) {
+
+		ProductListingPage plp = new ProductListingPage();
+
+		plp.selectCategory(category);
+	}
+
+	@When("user click on the first product from search results")
+	public void clickOnFirstProductFromSearchResults() {
+
+		SearchResultPage srp = new SearchResultPage();
+
+		srp.clickProductByIndex(1);
+
+		switchToNewWindow();
+	}
+
+	@When("user select size {string}")
+	public void selectSizeProduct(String size) {
+
+		ProductDetailPage pdp = new ProductDetailPage();
+
+		pdp.selectSize(size);
+	}
+
+	@When("user clicks Add to Bag button")
+	public void clicksAddToBagButton() {
+
+		ProductDetailPage pdp = new ProductDetailPage();
+
+		pdp.clickOnAddToBag();
+	}
+
+	@Then("product should be added to bag successfully")
+	public void productShouldBeAddedToBagSuccessfully() {
+
+		ProductDetailPage pdp = new ProductDetailPage();
+
+		boolean isAdded = pdp.isProductAddedToBag();
+
+		System.out.println("Product added: " + isAdded);
+
+		Assert.assertTrue(pdp.isGoToBagButtonDisplayed(), "Product was not added to bag");
 	}
 }

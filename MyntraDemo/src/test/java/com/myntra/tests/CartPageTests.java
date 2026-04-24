@@ -1,11 +1,12 @@
 package com.myntra.tests;
 
-import static com.myntra.basetest.KeyWord.*;
+import static com.myntra.base.KeyWord.*;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.myntra.basetest.BaseClass;
+import com.myntra.base.BaseClass;
+import com.myntra.base.KeyWord;
 import com.myntra.pages.CartPage;
 import com.myntra.pages.HomePage;
 import com.myntra.pages.ProductDetailPage;
@@ -16,38 +17,28 @@ import org.testng.asserts.SoftAssert;
 
 public class CartPageTests extends BaseClass {
 
-	// Test case to verify that the product is added to the cart successfully
-
 	@Test
 	public void verifyProductDisplayedInCart() {
 
-		// Create page objects
 		HomePage home = new HomePage();
 		ProductListingPage plp = new ProductListingPage();
 		SearchResultPage srp = new SearchResultPage();
 		ProductDetailPage pdp = new ProductDetailPage();
 		CartPage cart = new CartPage();
 
-		// Step 1: Hover Women menu
 		home.hoverOnWomenMenu();
 
-		// Step 2: Click Indian Fusion Wear
 		home.clickIndianFusionWear();
-
-		// Step 3: Select category
 		plp.selectCategory("Kurtas");
 
-		// Step 4: Click first product
 		srp.clickProductByIndex(1);
 
-		// Step 5: Switch to new window
 		switchToNewWindow();
 
-		// Step 6: Select size
-		pdp.selectSize("XL");
+		pdp.selectSize("L");
 		pdp.clickOnAddToBag();
-		pdp.clickBagIcon();
-		// Step 9: Verify product displayed in cart
+		pdp.clickOnGoToBag();
+
 		Assert.assertTrue(cart.isProductDispayed(), "Product not displayed in cart");
 	}
 
@@ -67,8 +58,7 @@ public class CartPageTests extends BaseClass {
 		pdp.clickOnGoToBag();
 		String currentUrl = driver.getCurrentUrl();
 
-		// Assert.assertTrue(currentUrl.contains("/checkout/cart"), "Cart page not
-		// opened");
+	
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertTrue(currentUrl.contains("/checkout/cart"), "Cart page URL not correct");
 
@@ -162,13 +152,12 @@ public class CartPageTests extends BaseClass {
 		CartPage cart = new CartPage();
 		cart.clickRemoveButton();
 		cart.confirmRemoveProduct();
-
+       
 		Assert.assertTrue(cart.isEmptyCartMessageDisplayed(), "Product not removed from cart");
-//		softAssert.assertTrue(cart.EmptyCartMsgafterRemoveCartFromBag(), "Product not removed from cart");
-//
-//		softAssert.assertAll();
+        
 	}
-      //Negative test cases
+
+	// Negative test cases
 	@Test
 	public void verifyInvalidPincodeEntry_OnCartPage() {
 

@@ -1,6 +1,7 @@
-Feature: Women module navigation
+Feature: Home Page Functionality
 
   # Women Module Home Page Scenario 1
+  @Smoke
   Scenario: Verify user can open Women section
     Given User launches browser
     When User clicks on Women menu
@@ -74,3 +75,5 @@ Scenario: Verify wishlist access without login
 Scenario: Verify search using random number
   When user search for the product "123456789"
   Then user should see no results message
+  
+  

@@ -1,13 +1,13 @@
 package com.myntra.tests;
 
-import static com.myntra.basetest.KeyWord.*;
+import static com.myntra.base.KeyWord.*;
 
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.listener.MyTestListener;
-import com.myntra.basetest.BaseClass;
+import com.myntra.base.BaseClass;
 import com.myntra.pages.HomePage;
 import com.myntra.pages.ProductListingPage;
 import com.myntra.pages.SearchPage;

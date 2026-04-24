@@ -3,8 +3,9 @@ package com.runner;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
-@CucumberOptions(features = "src/test/resources/features", glue = {
-		"com.myntra.stepdefinitions", "com.myntra.hooks" },tags = "@PdpNavigation"
+@CucumberOptions(features = "src/test/resources/features", glue = { "com.myntra.stepdefinitions",
+		"com.myntra.hooks" }, tags = "@InvalidPincode", plugin = {
+				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm" }
 
 )
 

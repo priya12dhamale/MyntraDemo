@@ -1,6 +1,6 @@
 package com.myntra.pages;
 
-import static com.myntra.basetest.KeyWord.*;
+import static com.myntra.base.KeyWord.*;
 
 import java.time.Duration;
 import java.util.List;
@@ -12,8 +12,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.myntra.basetest.BaseClass;
-import com.myntra.basetest.KeyWord;
+import com.myntra.base.BaseClass;
+import com.myntra.base.KeyWord;
 import com.myntra.utils.WaitFor;
 
 public class ProductDetailPage extends BaseClass {
@@ -35,9 +35,6 @@ public class ProductDetailPage extends BaseClass {
 	@FindBy(xpath = "//h1[@class=\"pdp-name\"]")
 	WebElement productName;
 
-//	
-//	WebElement productTitle;
-//	
 	@FindBy(xpath = "//h1/preceding-sibling::h1")
 	WebElement productBrand;
 //	
@@ -54,8 +51,6 @@ public class ProductDetailPage extends BaseClass {
 	@FindBy(xpath = "(//a[contains(@href,'checkout/cart')])[1]")
 	WebElement bagIcon;
 
-//	By sizeErrorMsg = By.xpath("//span[text()='Please select a size']");
-
 	@FindBy(xpath = "//span[text()='Please select a size']")
 	WebElement sizeErrorMsg;
 
@@ -67,20 +62,18 @@ public class ProductDetailPage extends BaseClass {
 
 	@FindBy(xpath = "//span[contains(text(),'WISHLIST')]")
 	WebElement wishlistButton;
+	
 	@FindBy(xpath = "//input[@placeholder=\"Enter pincode\"]")
 	WebElement pincodeTextbox;
 
 	@FindBy(xpath = "//input[@value=\"Check\"]")
 	WebElement checkButton;
 
-//	@FindBy(xpath = "//div[contains(text(),'Please enter a valid pincode')]")
-//	WebElement invalidPincodeErrorMessage;
-	@FindBy(xpath="//p[@class=\"pincode-error pincode-enterPincode\"]")
-	WebElement invalidPinMessage ;
-	
+	@FindBy(xpath = "//p[@class=\"pincode-error pincode-enterPincode\"]")
+	WebElement invalidPinMessage;
 
 	public ProductDetailPage() {
-		PageFactory.initElements(KeyWord.driver, this);//
+		PageFactory.initElements(KeyWord.driver, this);
 	}
 
 //	public void selectSize1() {
@@ -90,25 +83,27 @@ public class ProductDetailPage extends BaseClass {
 //	}
 	public void enterPincode(String pin) {
 
-	    WaitFor.elementToBeVisible(pincodeTextbox);
-	    WaitFor.elementToBeClickable(pincodeTextbox);
+		WaitFor.elementToBeVisible(pincodeTextbox);
+		WaitFor.elementToBeClickable(pincodeTextbox);
 
-	    pincodeTextbox.clear();
-	    pincodeTextbox.sendKeys(pin);
+		pincodeTextbox.clear();
+		pincodeTextbox.sendKeys(pin);
 	}
+
 	public void clickOnCheckButton() {
 
-	    WaitFor.elementToBeVisible(checkButton);
-	    WaitFor.elementToBeClickable(checkButton);
+		WaitFor.elementToBeVisible(checkButton);
+		WaitFor.elementToBeClickable(checkButton);
 
-	    checkButton.click();
+		checkButton.click();
 	}
+
 	public String getInvalidPinMessage() {
 
-	    WaitFor.elementToBeVisible(invalidPinMessage);
-
-	    return invalidPinMessage.getText();
+		WaitFor.elementToBeVisible(invalidPinMessage);
+		return invalidPinMessage.getText();
 	}
+
 //	public String getInvalidPinMessage() {
 //		WaitFor.visibilityOfelement(invalidPinMessage);
 //		return invalidPinMessage.getText();
@@ -116,18 +111,16 @@ public class ProductDetailPage extends BaseClass {
 //	}
 	public boolean isInvalidPinMessageDisplayed() {
 
-	    try {
+		try {
+			Thread.sleep(1000); // small wait to catch popup
+			return invalidPinMessage.isDisplayed();
 
-	        Thread.sleep(1000); // small wait to catch popup
+		} catch (Exception e) {
 
-	        return invalidPinMessage.isDisplayed();
-
-	    } catch (Exception e) {
-
-	        return false;
-	    }
+			return false;
+		}
 	}
-	
+
 	public boolean isSizeSelectionSuccessful() {
 
 		try {
@@ -263,7 +256,7 @@ public class ProductDetailPage extends BaseClass {
 //	}
 //	
 	public void clickBagIcon() {
-      WaitFor.elementToBeVisible(bagIcon);
+		WaitFor.elementToBeVisible(bagIcon);
 		bagIcon.click();
 
 	}
@@ -333,6 +326,5 @@ public class ProductDetailPage extends BaseClass {
 
 		wishlistButton.click();
 	}
-
 
 }

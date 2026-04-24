@@ -1,6 +1,6 @@
 package com.myntra.stepdefinitions;
 
-import static com.myntra.basetest.KeyWord.*;
+import static com.myntra.base.KeyWord.*;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,7 +24,7 @@ public class ProductListingPageSteps {
 	int countBefore;
 	int countAfter;
 
-	// ---------- COMMON STEPS ----------
+	// COMMON STEPS 
 
 	@Given("User is on Myntra home page")
 	public void user_is_on_home_page() {
@@ -41,14 +41,12 @@ public class ProductListingPageSteps {
 		home.clickIndianFusionWear();
 	}
 
-	// ---------- TC 1 : PLP DISPLAY ----------
 
 	@Then("product listing page should be displayed")
 	public void product_listing_page_should_be_displayed() {
 		Assert.assertTrue(plp.isProductDisplayed());
 	}
 
-	// ---------- TC 2 : CATEGORY FILTER ----------
 
 	@When("User notes the product count before applying category filter")
 	public void get_product_count_before_filter() {
@@ -66,7 +64,6 @@ public class ProductListingPageSteps {
 		Assert.assertTrue(countAfter <= countBefore);
 	}
 
-	// ---------- TC 3 : BRAND FILTER ----------
 
 	@When("user apply brand filter")
 	public void user_apply_brand_filter() {

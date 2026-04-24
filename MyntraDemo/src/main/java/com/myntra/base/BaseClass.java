@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import com.myntra.utils.ConfigReader;
 import com.myntra.utils.ConfigReader;
 
-import static com.myntra.base.Keyword.*;
+import static com.myntra.base.KeyWord.*;
 
 import java.io.IOException;
 
@@ -28,7 +28,7 @@ public class BaseClass {
           openBrowser();
 		// Maximize window
 		//maximizeWindow();
-    openUrl();
+    launchUrl();
 		// Launch application/
 	//	launchUrl(url);
 		// getUrl(url);

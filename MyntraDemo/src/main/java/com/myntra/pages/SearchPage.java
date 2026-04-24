@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.myntra.basetest.KeyWord;
+import com.myntra.base.KeyWord;
 import com.myntra.utils.WaitFor;
 
 //handeling search box and search product functionality

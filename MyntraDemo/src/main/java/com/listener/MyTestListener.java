@@ -4,7 +4,7 @@ import org.testng.ITestListener;
 
 import org.testng.ITestResult;
 
-import com.myntra.basetest.KeyWord;
+import com.myntra.base.KeyWord;
 import com.myntra.utils.Screenshot;
 
 

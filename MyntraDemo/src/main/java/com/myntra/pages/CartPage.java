@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.myntra.basetest.KeyWord;
+import com.myntra.base.KeyWord;
 import com.myntra.utils.WaitFor;
 
 public class CartPage {
@@ -16,7 +16,7 @@ public class CartPage {
 	@FindBy(xpath="//div[text()=\"PLACE ORDER\"]")
 	WebElement placeOrderButton;
 	
-	@FindBy(xpath = "//div[contains(text(),'There is nothing in your bag')]")
+	@FindBy(xpath = "//div[@class='emptyCart-base-emptyDesc']")
 	WebElement emptyCartMessage;
 	
 	@FindBy(xpath="//button[@font-size=\"body3\"]")
@@ -61,6 +61,7 @@ public class CartPage {
 	    return placeOrderButton.isDisplayed();
 	}
 	public boolean isEmptyCartMessageDisplayed() {
+		WaitFor.elementToBeVisible(emptyCartMessage);
 	    return emptyCartMessage.isDisplayed();
 	}
 	
@@ -115,8 +116,8 @@ public class CartPage {
 	}
 	
 	public boolean isErrorMessageDisplayed() {
-
-	  //  waitForVisibility(errorMessage);
+   WaitFor.elementToBeVisible(errorMessage);
+	//  waitForVisibility(errorMessage);
 	    return errorMessage.isDisplayed();
 	}
 //	public void enterPincode(String pincode) {

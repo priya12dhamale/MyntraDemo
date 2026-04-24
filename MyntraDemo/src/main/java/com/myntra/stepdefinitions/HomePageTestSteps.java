@@ -4,14 +4,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 
-import static com.myntra.basetest.KeyWord.*;
+import static com.myntra.base.KeyWord.*;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
-import com.myntra.basetest.KeyWord;
+import com.myntra.base.KeyWord;
 import com.myntra.hooks.Hooks;
 import com.myntra.pages.HomePage;
 import com.myntra.pages.ProductListingPage;

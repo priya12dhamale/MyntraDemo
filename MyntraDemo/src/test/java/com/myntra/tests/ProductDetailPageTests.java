@@ -1,11 +1,11 @@
 package com.myntra.tests;
 
-import static com.myntra.basetest.KeyWord.*;
+import static com.myntra.base.KeyWord.*;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.myntra.basetest.BaseClass;
+import com.myntra.base.BaseClass;
 import com.myntra.pages.HomePage;
 import com.myntra.pages.ProductDetailPage;
 import com.myntra.pages.ProductListingPage;
@@ -43,8 +43,7 @@ public class ProductDetailPageTests extends BaseClass {
 
 		SearchResultPage srp = new SearchResultPage();
 
-		//int index = 2;
-
+		// int index = 2;
 		String brandPLP = srp.getProductBrandByIndex(2);
 
 		System.out.println("Brand on PLP: " + brandPLP);
@@ -90,9 +89,10 @@ public class ProductDetailPageTests extends BaseClass {
 	public void verifyDifferentSizeOptionsDisplayed() {
 
 		HomePage home = new HomePage();
-
+		ProductListingPage plp = new ProductListingPage();
 		home.hoverOnWomenMenu();
 		home.clickIndianFusionWear();
+		plp.selectCategory("Kurtas");
 
 		SearchResultPage srp = new SearchResultPage();
 
@@ -173,7 +173,7 @@ public class ProductDetailPageTests extends BaseClass {
 		Assert.assertTrue(pdp.isGoToBagButtonDisplayed(), "Product was not added to bag");
 	}
 
-	@Test(groups = "regression")
+	@Test
 	public void verifyWithoutLoginClickingWishlistItRedirectsToLoginPage() {
 
 		HomePage home = new HomePage();

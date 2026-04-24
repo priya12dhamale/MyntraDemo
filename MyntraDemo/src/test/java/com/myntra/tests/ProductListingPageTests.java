@@ -1,6 +1,6 @@
 package com.myntra.tests;
 
-import static com.myntra.basetest.KeyWord.*;
+import static com.myntra.base.KeyWord.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,7 +12,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import com.myntra.basetest.BaseClass;
+import com.myntra.base.BaseClass;
 import com.myntra.dataprovider.DataProviderClass;
 import com.myntra.hooks.Hooks;
 import com.myntra.pages.HomePage;
@@ -164,7 +164,7 @@ public class ProductListingPageTests extends BaseClass {
 	@Test(dataProvider = "categoryData", dataProviderClass = DataProviderClass.class)
 	public void verifyCategoryFilterApplied(String category) throws InterruptedException {
 
-		driver.get(ConfigReader.get("base.url"));
+	//	driver.get(ConfigReader.get("base.url"));
 
 		HomePage home = new HomePage();
 

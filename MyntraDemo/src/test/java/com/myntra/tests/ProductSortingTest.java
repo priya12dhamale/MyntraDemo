@@ -7,7 +7,7 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.myntra.basetest.BaseClass;
+import com.myntra.base.BaseClass;
 import com.myntra.pages.HomePage;
 import com.myntra.pages.ProductListingPage;
 import com.myntra.utils.WaitFor;

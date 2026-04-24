@@ -1,12 +1,12 @@
 package com.myntra.tests;
 
-import static com.myntra.basetest.KeyWord.*;
+import static com.myntra.base.KeyWord.*;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.myntra.basetest.BaseClass;
-import com.myntra.basetest.KeyWord;
+import com.myntra.base.BaseClass;
+import com.myntra.base.KeyWord;
 import com.myntra.pages.CartPage;
 import com.myntra.pages.HomePage;
 import com.myntra.pages.ProductDetailPage;
@@ -32,9 +32,10 @@ public class EndToEndTests extends BaseClass {
 		plp.selectBrand("Roadster");
 
 		plp.selectColour("Black");
-          
-		//srp.clickOnFirstProduct();
-      srp.clickProductByIndex(1);
+
+		plp.selectDiscount("50%");
+
+		srp.clickProductByIndex(1);
 		switchToNewWindow();
 
 		pdp.selectSize("30");

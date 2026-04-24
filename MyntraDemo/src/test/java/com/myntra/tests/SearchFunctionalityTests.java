@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import com.myntra.basetest.BaseClass;
+import com.myntra.base.BaseClass;
 import com.myntra.pages.SearchPage;
 import com.myntra.pages.SearchResultPage;
 import com.listener.MyTestListener;
