@@ -41,10 +41,10 @@ public class HomePage {
 	// women menu
 	@FindBy(xpath = "//a[@data-group=\"women\"]")
 	WebElement womenMenu;
-	
+
 	@FindBy(xpath = "//li[contains(@class,'product-base')]")
 	List<WebElement> productcards;
-	
+
 	@FindBy(xpath = "//ul[contains(@class,'desktop-group')]/li")
 	List<WebElement> suggestions;
 
@@ -56,8 +56,6 @@ public class HomePage {
 
 	@FindBy(xpath = "//a[@href='/women-jewellery']")
 	WebElement jewelleryOption;
-	
-	
 
 	public HomePage() {
 
@@ -82,6 +80,7 @@ public class HomePage {
 	public boolean isWomenMenuDisplayed() {
 		return womenMenu.isDisplayed();
 	}
+
 	public void bagIconClick() {
 		WaitFor.elementToBeClickable(bagIcon);
 		bagIcon.click();
@@ -91,10 +90,10 @@ public class HomePage {
 		WaitFor.elementToBeClickable(womenMenu);
 		KeyWord.hover(womenMenu);
 	}
-	// creating the method to check the profile icon is displayed or not we using
+
 	public boolean profileIconIsDisplayed() {
 		WaitFor.elementToBeVisible(profileIcon);
-    	return profileIcon.isDisplayed();
+		return profileIcon.isDisplayed();
 	}
 
 	public boolean wishlistIconIsDisplayed() {
@@ -133,22 +132,29 @@ public class HomePage {
 		WaitFor.elementToBeVisible(mobileNumberField);
 		return mobileNumberField.isDisplayed();
 	}
+
 	public void searchProduct(String product) {
 		WaitFor.elementToBeVisible(searchBox);
 		searchBox.sendKeys(product);
 		searchBox.sendKeys(Keys.ENTER);
 	}
+
 	public void clickWishlistIcon() {
 
 		wishlist.click();
 	}
-	
+
 	public boolean searchResultsAreDisplayed() {
 		WaitFor.visibilityOfElements(productcards);
 		// Check if there are any product cards displayed
 		return productcards.size() > 0;
 
 	}
+	
+	public boolean isLoginPageDisplayed() {
+		return mobileNumberField.isDisplayed();
+	}
+
 	public void searchProductUsingSuggestions(String products) {
 		WaitFor.elementToBeVisible(searchBox);
 		searchBox.sendKeys(products);

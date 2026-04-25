@@ -94,17 +94,6 @@ public class SearchResultPage {
 		KeyWord.clickOn(productCards.get(index));
 	}
 
-//          public String getProductNameByIndex(int index) {
-//        	    return productBrands.get(index).getText();
-//        	}
-////          
-//          public String getProductFullNameByIndex(int index) {
-//
-//        	    String brand = productBrands.get(index -1).getText();
-//        	    String title = productTitles.get(index -1).getText();
-//
-//        	    return brand + " " + title;
-//        	}
 	public String getProductBrandByIndex(int index) {
 		return productBrands.get(index - 1).getText();
 	}

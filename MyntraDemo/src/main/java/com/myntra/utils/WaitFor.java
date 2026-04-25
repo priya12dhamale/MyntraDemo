@@ -41,7 +41,6 @@ public class WaitFor {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 
-	// wait till the WebElement is visible
 	public static WebElement elementToBeVisible(WebElement element) {
 		return wait.until(ExpectedConditions.visibilityOf(element));
 	}
@@ -50,11 +49,6 @@ public class WaitFor {
 	public static void elementToBeClickable(By locator) {
 		wait.until(ExpectedConditions.elementToBeClickable(locator));
 	}
-
-//	// wait till WebElement is clickable
-//	public static WebElement elementToBeClickable(WebElement element) {
-//		return wait.until(ExpectedConditions.elementToBeClickable(element));
-//	}
 
 	// wait for element to be selected using locator
 	public static void elementToBeSelected(By locator) {

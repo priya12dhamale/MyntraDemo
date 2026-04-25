@@ -6,11 +6,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 
+import com.myntra.pages.CartPage;
 import com.myntra.pages.HomePage;
 import com.myntra.pages.ProductDetailPage;
 import com.myntra.pages.ProductListingPage;
 import com.myntra.pages.SearchResultPage;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -216,5 +218,123 @@ public class ProductDetailPageSteps {
 		System.out.println("Product added: " + isAdded);
 
 		Assert.assertTrue(pdp.isGoToBagButtonDisplayed(), "Product was not added to bag");
+	}
+
+	@Given("user select category {string} PDP")
+	public void selectCategoryPDP(String category) {
+
+		ProductListingPage plp = new ProductListingPage();
+		plp.selectCategory(category);
+
+	}
+
+	@When("user click on the first product from search results PDP")
+	public void clickFirstProductPDP() {
+
+		SearchResultPage srp = new SearchResultPage();
+		srp.clickProductByIndex(1);
+		switchToNewWindow();
+
+	}
+
+	@When("user select size {string} PDP")
+	public void selectSizePDP(String size) {
+
+		ProductDetailPage pdp = new ProductDetailPage();
+		pdp.selectSize(size);
+
+	}
+
+	@When("user clicks Add to Bag button PDP")
+	public void clickAddToBagPDP() {
+
+		ProductDetailPage pdp = new ProductDetailPage();
+		pdp.clickOnAddToBag();
+
+	}
+
+	@Then("product should be added to bag successfully PDP")
+	public void verifyProductAddedPDP() {
+
+		ProductDetailPage pdp = new ProductDetailPage();
+
+		Assert.assertTrue(pdp.isGoToBagButtonDisplayed(), "Product was not added to bag");
+
+	}
+
+	@Given("user opens any product detail page")
+	public void userOpensAnyProductDetailPage() {
+
+		HomePage home = new HomePage();
+		SearchResultPage srp = new SearchResultPage();
+
+		home.hoverOnWomenMenu();
+		home.clickIndianFusionWear();
+
+		srp.clickProductByIndex(1);
+
+		switchToNewWindow();
+	}
+
+	@When("user provides invalid pincode {string}")
+	public void userProvidesInvalidPincode(String invalidPin) {
+
+		ProductDetailPage pdp = new ProductDetailPage();
+
+		pdp.enterPincode(invalidPin);
+	}
+
+	@When("user taps on Check availability button")
+	public void userTapsOnCheckAvailabilityButton() {
+
+		ProductDetailPage pdp = new ProductDetailPage();
+
+		pdp.clickOnCheckButton();
+	}
+
+	@Then("invalid pincode warning message should appear")
+	public void invalidPincodeWarningMessageShouldAppear() {
+
+		ProductDetailPage pdp = new ProductDetailPage();
+
+		Assert.assertTrue(pdp.isInvalidPinMessageDisplayed(), "Invalid pincode error message should be displayed");
+	}
+
+	@Given("shopper lands on a product detail screen")
+	public void shopperLandsOnProductDetailScreen() {
+
+		HomePage home = new HomePage();
+		SearchResultPage srp = new SearchResultPage();
+
+		home.hoverOnWomenMenu();
+		home.clickIndianFusionWear();
+
+		srp.clickProductByIndex(1);
+
+		switchToNewWindow();
+	}
+
+	@When("shopper submits serviceable pincode {string}")
+	public void shopperSubmitsServiceablePincode(String validPin) {
+
+		ProductDetailPage pdp = new ProductDetailPage();
+
+		pdp.enterPincode(validPin);
+	}
+
+	@When("shopper presses Check delivery button")
+	public void shopperPressesCheckDeliveryButton() {
+
+		ProductDetailPage pdp = new ProductDetailPage();
+
+		pdp.clickOnCheckButton();
+	}
+
+	@Then("delivery details should be visible for that pincode")
+	public void deliveryDetailsShouldBeVisibleForThatPincode() {
+
+		ProductDetailPage pdp = new ProductDetailPage();
+
+		Assert.assertTrue(pdp.isChangeButtonDisplayed(), "Delivery information is not displayed for valid pincode");
 	}
 }

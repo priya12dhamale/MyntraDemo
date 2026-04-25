@@ -1,7 +1,6 @@
 Feature: Home Page Functionality
 
-  # Women Module Home Page Scenario 1
-  @Smoke
+  @womenmodulenavigation
   Scenario: Verify user can open Women section
     Given User launches browser
     When User clicks on Women menu

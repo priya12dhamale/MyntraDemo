@@ -16,27 +16,15 @@ public class BaseClass {
 	@BeforeMethod
 	public void setUp() throws IOException {
 
-		// Read values from config.properties
-//		String browser = "";
-//		String url = "";
-//
-//		browser = ConfigReader.getProperties("browser");
-//		url = ConfigReader.getProperties("url");
+		openBrowser();
 
-		// Open browser
-		//openBrowser(browser);
-          openBrowser();
-		// Maximize window
-		//maximizeWindow();
-    launchUrl();
-		// Launch application/
-	//	launchUrl(url);
-		// getUrl(url);
+		launchUrl();
+
 	}
-//
-//	@AfterMethod
-//	public void tearDown() {
-//		closeBrowser();
-//	}
+	
+	@AfterMethod
+	public void tearDown() {
+		closeBrowser();
+	}
 
 }

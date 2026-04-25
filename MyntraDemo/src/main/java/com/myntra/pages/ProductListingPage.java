@@ -65,9 +65,6 @@ public class ProductListingPage {
 	@FindBy(xpath = "//ul[@class=\"discount-list\"]/li")
 	List<WebElement> discountOptions;
 
-//	@FindBy(xpath = "//li[@class=\"discount-listItem\"]")
-//	WebElement discountOptions;
-
 	@FindBy(xpath = "(//span[@class=\"myntraweb-sprite filter-search-iconSearch sprites-search\"])[1]")
 	WebElement categorySearch;
 
@@ -76,8 +73,6 @@ public class ProductListingPage {
 	@FindBy(xpath = "//span[text()='Brand']/following::span[contains(@class,'search')][1]") //
 	WebElement brandSearch;
 
-	// @FindBy(xpath = "(//span[@class=\"myntraweb-sprite filter-search-iconSearch
-	// sprites-search\"])[2]")
 	@FindBy(xpath = "//span[text()='Color']/following::span[contains(@class,'search')][1]")
 	WebElement colourSearch;
 
@@ -90,11 +85,8 @@ public class ProductListingPage {
 	@FindBy(xpath = "//label[text()='Price: High to Low']")
 	WebElement highToLowOption;
 
-	// Find all product price elements on the Product Listing Page
 	@FindBy(xpath = "//span[@class='product-discountedPrice']")
 	List<WebElement> productPrices;
-
-	// Product items list
 
 	@FindBy(xpath = "//li[contains(@class,'product-base')]")
 	private List<WebElement> productList;
@@ -149,7 +141,6 @@ public class ProductListingPage {
 	public int getProductCount() {
 		return productList.size();
 	}
-	// Method to check products displayed
 
 	public boolean isProductDisplayed() {
 		return productList.size() > 0;
@@ -158,15 +149,6 @@ public class ProductListingPage {
 	public void clearAllFilters() {
 		KeyWord.clickOn(clearAllButton);
 	}
-
-//	public boolean isCategoryFilt1erApplied(String category) {
-//		for (WebElement filter : appliedFilters) {
-//			if (filter.getText().equalsIgnoreCase(category)) {
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
 
 	public boolean isCategoryFilterApplied(String category) {
 		try {
@@ -185,28 +167,10 @@ public class ProductListingPage {
 		KeyWord.enterText("xpath", "//input[@placeholder=\"Search for Categories\"]", category);
 		WaitFor.elementToBeVisible(categoryOption);
 		WaitFor.elementToBeClickable(categoryOption);
-		// Keyword.WaitForSeconds(4000);
 		categoryOption.click();
 		KeyWord.WaitForSeconds(2000);
-		// Keyword.clickOnElement(categoryOption);
 	}
 
-//	public void selectBrand1(String BrandName) {
-//
-//		WaitFor.elementToBeVisible(brandSearch);
-//		WaitFor.elementToBeClickable(brandSearch);
-//		Keyword.clickOnElement(brandSearch);
-//		// brandSearch.click();
-//		By BrandSearch = By.xpath("//input[@placeholder=\"Search for Brand\"]");//
-//		WaitFor.elementToBeVisible(BrandSearch);
-//		Keyword.enterText("xpath", "//input[@placeholder=\"Search for Brand\"]", BrandName);//
-//		WaitFor.elementToBeVisible(brandOptions);
-//		WaitFor.elementToBeClickable(brandOptions);
-//
-//		brandOptions.click();
-//		// WaitFor.elementToBeClickable(brandOptions);
-//		Keyword.WaitForSeconds(2000);
-//	}
 
 	public void selectBrand(String BrandName) {
 
@@ -224,7 +188,6 @@ public class ProductListingPage {
 
 		if (brandList.size() == 0) {
 
-			// System.out.println("Brand not found: " + BrandName);
 			return;
 		}
 		WaitFor.elementToBeClickable(brandOptions);
@@ -233,7 +196,7 @@ public class ProductListingPage {
 	}
 
 	public void selectColour(String ColourName) {
-		// Keyword.scrollToElement(colourSearch);
+	
 		WaitFor.elementToBeVisible(colourSearch);
 		WaitFor.elementToBeClickable(colourSearch);
 		KeyWord.clickOnElement(colourSearch);
@@ -243,9 +206,7 @@ public class ProductListingPage {
 		WaitFor.elementToBeVisible(colorOptions);
 		WaitFor.elementToBeClickable(colorOptions);
 		colorOptions.click();
-		// driver.executeScript("arguments[0].click();", colorOptions);
 		KeyWord.WaitForSeconds(2000);
-		// WaitFor.elementToBeClickable(colorOptions);
 	}
 
 	public void selectDiscount(String discountName) {
@@ -304,7 +265,6 @@ public class ProductListingPage {
 
 			System.out.println("Stale element detected, retrying...");
 
-			// WaitFor.pageToLoad();
 			WaitFor.visibilityOfAllElements(productPrices);
 
 			for (WebElement price : productPrices) {
@@ -385,9 +345,5 @@ public class ProductListingPage {
 	    }
 	    return true;
 	}
-//
-//	public String getPlpTitle() {
-//
-//	    return Keyword.driver.getTitle();
-//	}
+
 }

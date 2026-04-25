@@ -10,9 +10,9 @@ import com.listener.MyTestListener;
 import com.myntra.base.BaseClass;
 import com.myntra.pages.HomePage;
 import com.myntra.pages.ProductListingPage;
-import com.myntra.pages.SearchPage;
 import com.myntra.pages.SearchResultPage;
 import com.myntra.utils.ConfigReader;
+
 @Listeners(MyTestListener.class)
 public class HomePageTests extends BaseClass {
 
@@ -70,7 +70,6 @@ public class HomePageTests extends BaseClass {
 
 		HomePage home = new HomePage();
 		ProductListingPage plp = new ProductListingPage();
-		// String product = "Women Top";
 		home.searchProductUsingSuggestions("Women Top");
 		Assert.assertTrue(plp.getLastBreadcrumbText().toLowerCase().contains("Women Top".toLowerCase()),
 				"Search did not navigate to correct PLP page");

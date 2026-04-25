@@ -71,16 +71,21 @@ public class ProductDetailPage extends BaseClass {
 
 	@FindBy(xpath = "//p[@class=\"pincode-error pincode-enterPincode\"]")
 	WebElement invalidPinMessage;
+	
+	@FindBy(xpath = "//button[text()='Change']")
+	WebElement changePincodeButton;
 
 	public ProductDetailPage() {
 		PageFactory.initElements(KeyWord.driver, this);
 	}
+	
+	public boolean isChangeButtonDisplayed() {
 
-//	public void selectSize1() {
-//		WaitFor.elementToBeVisible(size);//
-//		WaitFor.elementToBeClickable(size);//
-//		size.click();
-//	}
+	    WaitFor.elementToBeVisible(changePincodeButton);
+
+	    return changePincodeButton.isDisplayed();
+	}
+
 	public void enterPincode(String pin) {
 
 		WaitFor.elementToBeVisible(pincodeTextbox);
@@ -104,15 +109,11 @@ public class ProductDetailPage extends BaseClass {
 		return invalidPinMessage.getText();
 	}
 
-//	public String getInvalidPinMessage() {
-//		WaitFor.visibilityOfelement(invalidPinMessage);
-//		return invalidPinMessage.getText();
-//		
-//	}
+
 	public boolean isInvalidPinMessageDisplayed() {
 
 		try {
-			Thread.sleep(1000); // small wait to catch popup
+			WaitFor.elementToBeVisible(invalidPinMessage); 
 			return invalidPinMessage.isDisplayed();
 
 		} catch (Exception e) {
@@ -149,30 +150,18 @@ public class ProductDetailPage extends BaseClass {
 				return classValue.contains("selected");
 			}
 		}
-
 		return false;
 	}
 
-//	public void selectSize(String size) {
-//
-//	    By sizeOption =
-//	        By.xpath("//p[text()='" + size + "']");
-//
-//	    WaitFor.elementToBeVisible(sizeOption);
-//	    WaitFor.elementToBeClickable(sizeOption);
-//
-//	    driver.findElement(sizeOption).click();
-//	}
 	public void selectSize(String sizeValue) {
 
 		WaitFor.visibilityOfAllElements(sizeOptions);
-		// WaitFor.elementToBeClickable();
 
 		for (WebElement size : sizeOptions) {
 
 			// if (size.getText().equals(sizeValue)) {
 			if (size.getText().trim().equalsIgnoreCase(sizeValue)) {
-				WaitFor.elementToBeClickable(size);//
+				WaitFor.elementToBeClickable(size);
 				size.click();
 				break;
 
@@ -180,81 +169,26 @@ public class ProductDetailPage extends BaseClass {
 		}
 	}
 
-//	public void selectSize(String sizeValue) {
-//
-//	    WaitFor.visibilityOfAllElements(sizeOptions);
-//
-//	    for (WebElement size : sizeOptions) {
-//
-//	        if (size.getText().equalsIgnoreCase(sizeValue)) {
-//
-//	            WaitFor.elementToBeClickable(size);
-//
-//	            Keyword.clickOnElement(size);
-//
-//	            System.out.println("Selected size: " + sizeValue);
-//
-//	            return;
-//	        }
-//	    }
-//
-//	    throw new RuntimeException("Size not available: " + sizeValue);
-//	}
-//	
-//	
-//	
 	public void clickOnAddToBag() {
-		WaitFor.elementToBeVisible(addToBagBtn);//
-		WaitFor.elementToBeClickable(addToBagBtn);//
+		WaitFor.elementToBeVisible(addToBagBtn);
+		WaitFor.elementToBeClickable(addToBagBtn);
 		addToBagBtn.click();
 		KeyWord.WaitForSeconds(4000);
 	}
 
 	public String getProductName() {
-		WaitFor.elementToBeVisible(productName);//
-		WaitFor.elementToBeClickable(productName);//
+		WaitFor.elementToBeVisible(productName);
+		WaitFor.elementToBeClickable(productName);
 		return productName.getText();
 	}
 
 	public void clickOnGoToBag() {
-		WaitFor.elementToBeVisible(goToBagButton);//
-		WaitFor.elementToBeClickable(goToBagButton);//
-//		 WebDriverWait wait =
-//			        new WebDriverWait(driver,
-//			            Duration.ofSeconds(10));
-//
-//			    wait.until(ExpectedConditions
-//			        .visibilityOf(goToBagButton));
-//
-//			    wait.until(ExpectedConditions
-//			        .elementToBeClickable(goToBagButton));
-//			    
-		// driver.executeScript("arguments[0].click();", goToBagButton);
+		WaitFor.elementToBeVisible(goToBagButton);
+		WaitFor.elementToBeClickable(goToBagButton);
+
 		goToBagButton.click();
 	}
-
-//	public void clickOnBagIcon() {
-//		 WebDriverWait wait =
-//			        new WebDriverWait(driver,
-//			            Duration.ofSeconds(20));
-//
-//			    wait.until(ExpectedConditions
-//			        .visibilityOf(bagIcon));
-//
-//			    wait.until(ExpectedConditions
-//			        .elementToBeClickable(bagIcon));
-//			    
-//			  //  driver.executeScript("arguments[0].click();", bagIcon);
-//		bagIcon.click();
-//	}
-
-//	public String getSizeErrorMessage() {
-//	     
-//		WaitFor.elementToBeVisible(sizeErrorMsg);
-//		
-//		return driver.findElement(sizeErrorMsg).getText();
-//	}
-//	
+	
 	public void clickBagIcon() {
 		WaitFor.elementToBeVisible(bagIcon);
 		bagIcon.click();
@@ -266,13 +200,7 @@ public class ProductDetailPage extends BaseClass {
 		return sizeErrorMsg.getText();
 	}
 
-//	public String getProductFullName() {
-//
-//	    String brand = productBrand.getText();
-//	    String title = productTitle.getText();
-//
-//	    return brand + " " + title;
-//	}
+
 	public String getProductBrand() {
 		return productBrand.getText();
 	}

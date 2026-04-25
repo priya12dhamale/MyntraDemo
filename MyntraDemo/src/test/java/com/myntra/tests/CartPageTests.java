@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.myntra.base.BaseClass;
-import com.myntra.base.KeyWord;
+
 import com.myntra.pages.CartPage;
 import com.myntra.pages.HomePage;
 import com.myntra.pages.ProductDetailPage;
@@ -137,7 +137,6 @@ public class CartPageTests extends BaseClass {
 	@Test
 	public void verifyRemoveProductFromCart() {
 
-		// SoftAssert softAssert = new SoftAssert();
 		HomePage home = new HomePage();
 		home.hoverOnWomenMenu();
 		home.clickIndianFusionWear();

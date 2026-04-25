@@ -240,19 +240,15 @@ public class ProductDetailPageTests extends BaseClass {
 		home.clickIndianFusionWear();
 		srp.clickProductByIndex(1);
 		switchToNewWindow();
-		// Step 2: Enter invalid pincode
+		
 		pdp.enterPincode("123");
 
-		// Step 3: Click on Check button
+	
 		pdp.clickOnCheckButton();
-		WaitForSeconds(1);
-
-		// Step 4: Get error message
-		// String actualError = pdp.getInvalidPinMessage();
-
+	
 		Assert.assertTrue(pdp.isInvalidPinMessageDisplayed(), "Invalid pincode error message should be displayed");
-//		Assert.assertEquals(actualError, "Please enter a valid pincode",
-//				"Error message is not displayed for invalid pincode");
+	//	Assert.assertEquals(actualError, "Please enter a valid pincode",
+				//"Error message is not displayed for invalid pincode");
 	}
 
 }

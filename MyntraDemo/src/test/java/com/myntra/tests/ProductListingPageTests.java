@@ -26,6 +26,7 @@ public class ProductListingPageTests extends BaseClass {
 
 //	HomePage home = new HomePage();
 	private static final Logger LOG = LogManager.getLogger(ProductListingPageTests.class);
+
 	@Test
 	public void verifyProductListingPageDisplayed() {
 
@@ -67,12 +68,11 @@ public class ProductListingPageTests extends BaseClass {
 		home.clickIndianFusionWear();
 		ProductListingPage plp = new ProductListingPage();
 
-		// int before = plp.getProductCount();
 		String colour = "Black";
 		plp.selectColour(colour);
 		int after = plp.getProductCount();
-//	    System.out.println("Before filter count: " + before);
-//	    System.out.println("After filter count: " + after);
+
+		System.out.println("After filter count: " + after);
 		Assert.assertTrue(plp.isColourFilterApplied(colour), colour + " filter is not applied");
 	}
 
@@ -92,8 +92,8 @@ public class ProductListingPageTests extends BaseClass {
 
 		int countAfter = plp.getProductCount();
 
-		System.out.println("Before: " + countBefore);
-		System.out.println("After: " + countAfter);
+		LOG.info("Before: " + countBefore);
+		LOG.info("After: " + countAfter);
 
 		Assert.assertTrue(countAfter <= countBefore, "Category filter not applied");
 
@@ -164,7 +164,7 @@ public class ProductListingPageTests extends BaseClass {
 	@Test(dataProvider = "categoryData", dataProviderClass = DataProviderClass.class)
 	public void verifyCategoryFilterApplied(String category) throws InterruptedException {
 
-	//	driver.get(ConfigReader.get("base.url"));
+		// driver.get(ConfigReader.get("base.url"));
 
 		HomePage home = new HomePage();
 
@@ -316,7 +316,5 @@ public class ProductListingPageTests extends BaseClass {
 
 		softAssert.assertAll();
 	}
-	
-	
 
 }

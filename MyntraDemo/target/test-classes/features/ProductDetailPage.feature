@@ -42,3 +42,43 @@ Feature: Product Detail Page
     And user select size "40"
     And user clicks Add to Bag button
     Then product should be added to bag successfully
+  
+ @addMultipleSizesPDP
+Scenario Outline: Verify user can add product to bag for different sizes PDP
+  Given user navigates to Women Indian Fusion Wear category
+  And user select category "<category>" PDP
+  When user click on the first product from search results PDP
+  And user select size "<size>" PDP
+  And user clicks Add to Bag button PDP
+  Then product should be added to bag successfully PDP
+
+Examples:
+  | category | size |
+  | Kurtas   | S    |
+  
+  @invalidPincodeValidation
+Scenario Outline: Verify error message is displayed for invalid pincode values on PDP
+  Given user opens any product detail page
+  When user provides invalid pincode "<invalidPin>"
+  And user taps on Check availability button
+  Then invalid pincode warning message should appear
+
+Examples:
+  | invalidPin |
+  | 123        |
+  
+  @validPincodeValidation
+Scenario Outline: Verify delivery information is shown for valid pincode values on Product Detail Page
+  Given shopper lands on a product detail screen
+  When shopper submits serviceable pincode "<validPin>"
+  And shopper presses Check delivery button
+  Then delivery details should be visible for that pincode
+
+Examples:
+  | validPin |
+  | 411057   |
+  | 411014   |
+  | 411001   |
+  | 560001   |
+  | 400001   |
+  

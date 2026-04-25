@@ -12,124 +12,116 @@ public class CartPage {
 	@FindBy(xpath = "//div[contains(@class,'itemContainer')]")
 	WebElement cartProduct;
 
-	//@FindBy(xpath = "//span[text()='PLACE ORDER']")
-	@FindBy(xpath="//div[text()=\"PLACE ORDER\"]")
+	@FindBy(xpath = "//div[text()=\"PLACE ORDER\"]")
 	WebElement placeOrderButton;
-	
+
 	@FindBy(xpath = "//div[@class='emptyCart-base-emptyDesc']")
 	WebElement emptyCartMessage;
-	
-	@FindBy(xpath="//button[@font-size=\"body3\"]")
+
+	@FindBy(xpath = "//button[@font-size=\"body3\"]")
 	WebElement applyButton;
-	
-//	@FindBy(xpath = "//span[contains(text(),'Apply Coupons')]")
-//	WebElement applyCouponsLink;
-	
+
 	@FindBy(xpath = "//*[text()='REMOVE']")
 	WebElement removeButton;
 
 	@FindBy(xpath = "//div[@role='dialog']//button[text()='REMOVE']")
 	WebElement confirmRemoveButton;
+
 	@FindBy(xpath = "//div[contains(@class,'emptyCart')]")
 	WebElement emptyCartContainer;
-	
+
 	@FindBy(xpath = "//div[text()='ENTER PIN CODE']")
-	 WebElement enterPinCodeButton;
+	WebElement enterPinCodeButton;
 
 	@FindBy(xpath = "//input[@placeholder='Enter Pincode']")
-	 WebElement pincodeInput;
+	WebElement pincodeInput;
 
 	@FindBy(xpath = "//div[text()=\"CHECK\"]")
-	 WebElement checkButton;
+	WebElement checkButton;
 
 	@FindBy(xpath = "//*[contains(text(),'Something went wrong')]")
-	 WebElement errorMessage;
+	WebElement errorMessage;
 
-	
-	
 	{
 
 		PageFactory.initElements(KeyWord.driver, this);
 	}
-	
+
 	public boolean isProductDispayed() {
-		WaitFor.elementToBeVisible(cartProduct);//
+		WaitFor.elementToBeVisible(cartProduct);
 		return cartProduct.isDisplayed();
 	}
 	
-	public boolean isPlaceOrderButtonDisplayed() {
-	    return placeOrderButton.isDisplayed();
+	public void clickOnPlaceOrderButton() {
+		
+		placeOrderButton.click();
 	}
+
+	public boolean isPlaceOrderButtonDisplayed() {
+		return placeOrderButton.isDisplayed();
+	}
+
 	public boolean isEmptyCartMessageDisplayed() {
 		WaitFor.elementToBeVisible(emptyCartMessage);
-	    return emptyCartMessage.isDisplayed();
+		return emptyCartMessage.isDisplayed();
 	}
-	
+
 	public boolean isApplyCouponButtonDisplayed() {
 
-	    WaitFor.elementToBeVisible(applyButton);
+		WaitFor.elementToBeVisible(applyButton);
 
-	    return applyButton.isDisplayed();
+		return applyButton.isDisplayed();
 	}
+
 	public void clickRemoveButton() {
 
-	    WaitFor.elementToBeClickable(removeButton);
+		WaitFor.elementToBeClickable(removeButton);
 
-	    removeButton.click();
+		removeButton.click();
 
-	    System.out.println("Clicked Remove button");
+		System.out.println("Clicked Remove button");
 	}
+
 	public void confirmRemoveProduct() {
 
-		  WaitFor.elementToBeVisible(confirmRemoveButton);
-		    WaitFor.elementToBeClickable(confirmRemoveButton);
+		WaitFor.elementToBeVisible(confirmRemoveButton);
+		WaitFor.elementToBeClickable(confirmRemoveButton);
 
-		    confirmRemoveButton.click();
+		confirmRemoveButton.click();
 
-	    System.out.println("Confirmed Remove");
+		System.out.println("Confirmed Remove");
 	}
+
 	public boolean EmptyCartMsgafterRemoveCartFromBag() {
 
-	    WaitFor.elementToBeVisible(emptyCartContainer);
+		WaitFor.elementToBeVisible(emptyCartContainer);
 
-	    return emptyCartContainer.isDisplayed();
+		return emptyCartContainer.isDisplayed();
 	}
-	
+
 	public void clickEnterPinCode() {
 
-	  //  waitForVisibility(enterPinCodeButton);
-	    enterPinCodeButton.click();
+		// waitForVisibility(enterPinCodeButton);
+		enterPinCodeButton.click();
 	}
-	
+
 	public void enterPincode(String pincode) {
 
-	//    waitForVisibility(pincodeInput);
-
-	    pincodeInput.clear();
-	    pincodeInput.sendKeys(pincode);
+		// waitForVisibility(pincodeInput);
+		pincodeInput.clear();
+		pincodeInput.sendKeys(pincode);
 	}
-	
+
 	public void clickCheckButton() {
 
-	  //  waitForVisibility(checkButton);
-	    checkButton.click();
+		// waitForVisibility(checkButton);
+		checkButton.click();
 	}
-	
+
 	public boolean isErrorMessageDisplayed() {
-   WaitFor.elementToBeVisible(errorMessage);
-	//  waitForVisibility(errorMessage);
-	    return errorMessage.isDisplayed();
+		WaitFor.elementToBeVisible(errorMessage);
+		// waitForVisibility(errorMessage);
+		return errorMessage.isDisplayed();
 	}
-//	public void enterPincode(String pincode) {
-//
-//	    pincodeInput.clear();
-//	    pincodeInput.sendKeys(pincode);
-//
-//	    checkButton.click();
-//	}
-	
-//	public boolean isInvalidPincodeMessageDisplayed() {
-//
-//	    return invalidPincodeMessage.isDisplayed();
-//	}
+
 }

@@ -14,24 +14,15 @@ public class Hooks {
 	@Before
 	public void setUp() {
 
-//		String browser = "";
-//		String url = "";
-//
-//		browser = ConfigReader.getProperties("browser");
-//		url = ConfigReader.getProperties("url");
-
-		// Open browser
 		openBrowser();
 		LOG.info("Browser is opened..!");
-		// LOG.info("Browser opened: " + browser);
-		// Maximize window
-		// maximizeWindow();
 
 		launchUrl();
 	}
 
 	@After
 	public void tearDown() {
+		
 		closeBrowser();
 		LOG.info("Driver is Quit successfully....!");
 	}

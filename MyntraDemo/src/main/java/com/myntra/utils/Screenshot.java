@@ -20,14 +20,14 @@ public class Screenshot {
 
 		// date and time
 		String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
-		String DateTime= new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date());
+		String DateTime = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date());
 		// Destination path
 		File dest = new File("screenshots/" + testName + "_" + DateTime + ".png");
 
 		try {
 			FileUtils.copyFile(src, dest);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 	}

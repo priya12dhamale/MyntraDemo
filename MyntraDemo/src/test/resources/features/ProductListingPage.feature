@@ -24,7 +24,7 @@ Feature: Product Listing Page
   Scenario: Verify count of products in Product Listing Page
     Then user should see 50 products on Product Listing Page
 
-  @PdpNavigation
+  @PlpNavigation
   Scenario: Verify user can click product and navigate to PDP
     When user clicks on the first product
     And user switches to the new window
