@@ -15,7 +15,6 @@ public class Screenshot {
 
 	public static void captureScreenshot(RemoteWebDriver driver, String testName) {
 
-		// Take screenshot
 		File src = driver.getScreenshotAs(OutputType.FILE);
 
 		// date and time

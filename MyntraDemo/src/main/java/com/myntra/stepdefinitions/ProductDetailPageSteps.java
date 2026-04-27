@@ -337,4 +337,31 @@ public class ProductDetailPageSteps {
 
 		Assert.assertTrue(pdp.isChangeButtonDisplayed(), "Delivery information is not displayed for valid pincode");
 	}
+
+	@Then("product rating should be displayed on Product Detail Page")
+	public void verifyProductRatingDisplayed() {
+
+		ProductDetailPage pdp = new ProductDetailPage();
+
+		Assert.assertTrue(pdp.isRatingDisplayed(), "Product rating is not displayed");
+	}
+
+	@Then("product image should be displayed on Product Detail Page")
+	public void verifyProductImageDisplayedOnPdp() {
+
+		ProductDetailPage pdp = new ProductDetailPage();
+
+		Assert.assertTrue(pdp.isProductImageDisplayed(), "Product image is not displayed");
+	}
+	
+	@Then("Product Details section should be displayed on Product Detail Page")
+	public void verifyProductDetailsSectionDisplayed() {
+
+	    ProductDetailPage pdp = new ProductDetailPage();
+
+	    Assert.assertTrue(
+	            pdp.isProductDetailsSectionDisplayed(),
+	            "Product Details section is not displayed"
+	    );
+	}
 }

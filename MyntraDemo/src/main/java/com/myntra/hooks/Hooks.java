@@ -16,7 +16,6 @@ public class Hooks {
 
 		openBrowser();
 		LOG.info("Browser is opened..!");
-
 		launchUrl();
 	}
 

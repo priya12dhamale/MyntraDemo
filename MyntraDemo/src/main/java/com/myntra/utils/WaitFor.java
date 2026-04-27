@@ -66,10 +66,6 @@ public class WaitFor {
 		wait.until(ExpectedConditions.visibilityOfAllElements(elements));
 
 	}
-//	public static WebElement elementToBeVisible(By locator) {
-//	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	// return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-//	}
 
 	public static void numberOfElementsToBeMoreThan(By locator, int count) {
 		wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(locator, count));

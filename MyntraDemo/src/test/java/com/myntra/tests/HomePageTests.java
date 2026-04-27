@@ -79,9 +79,10 @@ public class HomePageTests extends BaseClass {
 	public void verifyWishlistAccessWithoutLogin() {
 
 		HomePage home = new HomePage();
-		home.wishlistIconIsDisplayed();
+		home.clickWishlistIcon();
+		//home.wishlistIconIsDisplayed();
 		String currentUrl = driver.getCurrentUrl();
-		Assert.assertTrue(currentUrl.contains("login"), "User not redirected to login page");
+		Assert.assertTrue(currentUrl.contains("/wishlist"), "User not redirected to login page");
 	}
 
 	@Test

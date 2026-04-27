@@ -137,7 +137,7 @@ public class KeyWord {
 	}
 
 	public static void clickOnElement(WebElement element) {
-		WaitFor.elementToBeClickable(element);//
+		WaitFor.elementToBeClickable(element);
 		element.click();
 	}
 

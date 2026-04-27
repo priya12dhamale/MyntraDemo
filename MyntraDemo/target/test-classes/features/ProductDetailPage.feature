@@ -82,3 +82,22 @@ Examples:
   | 560001   |
   | 400001   |
   
+  
+  @ProductRatingDisplay
+Scenario: Verify product rating is displayed on Product Detail Page
+  Given user navigates to Women Indian Fusion Wear category
+  When user clicks on the first product from search results
+  Then product rating should be displayed on Product Detail Page
+  
+  @ProductImageDisplay
+Scenario: Verify product image is displayed on Product Detail Page
+  Given user navigates to Women Indian Fusion Wear category
+  When user clicks on the first product from search results
+  Then product image should be displayed on Product Detail Page
+  
+  @ProductDetailsSectionDisplay
+Scenario: Verify Product Details section is displayed on Product Detail Page
+  Given user navigates to Women Indian Fusion Wear category
+  When user clicks on the first product from search results
+  Then Product Details section should be displayed on Product Detail Page
+  

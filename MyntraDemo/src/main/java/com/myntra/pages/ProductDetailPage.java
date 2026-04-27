@@ -74,6 +74,15 @@ public class ProductDetailPage extends BaseClass {
 	
 	@FindBy(xpath = "//button[text()='Change']")
 	WebElement changePincodeButton;
+	
+	@FindBy(xpath = "//div[contains(@class,'index-overallRating')]")
+	WebElement productRating;
+	
+	@FindBy(xpath = "(//div[@class=\"image-grid-col50\"])[1]")
+	WebElement productImage;
+	
+	@FindBy(xpath = "//h4[text()=\"Product Details \"]")
+	WebElement productDetailsSection;
 
 	public ProductDetailPage() {
 		PageFactory.initElements(KeyWord.driver, this);
@@ -159,7 +168,6 @@ public class ProductDetailPage extends BaseClass {
 
 		for (WebElement size : sizeOptions) {
 
-			// if (size.getText().equals(sizeValue)) {
 			if (size.getText().trim().equalsIgnoreCase(sizeValue)) {
 				WaitFor.elementToBeClickable(size);
 				size.click();
@@ -253,6 +261,27 @@ public class ProductDetailPage extends BaseClass {
 		WaitFor.elementToBeClickable(wishlistButton);
 
 		wishlistButton.click();
+	}
+	
+	public boolean isRatingDisplayed() {
+
+	    try {
+	        return productRating.isDisplayed();
+	    } catch (Exception e) {
+	        return false;
+	    }
+	}
+	
+	public boolean isProductImageDisplayed() {
+
+	    WaitFor.elementToBeVisible(productImage);
+
+	    return productImage.isDisplayed();
+	}
+	
+	public boolean isProductDetailsSectionDisplayed() {
+
+	    return productDetailsSection.isDisplayed();
 	}
 
 }

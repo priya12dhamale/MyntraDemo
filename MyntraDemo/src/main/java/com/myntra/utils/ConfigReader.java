@@ -18,7 +18,7 @@ public class ConfigReader {
 		}
 	}
 
-	/**
+	/*
 	 * No objects needed — all methods are static
 	 */
 

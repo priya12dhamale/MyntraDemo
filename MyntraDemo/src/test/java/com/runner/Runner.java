@@ -4,7 +4,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(features = "src/test/resources/features", glue = { "com.myntra.stepdefinitions",
-		"com.myntra.hooks" },tags="@validPincodeValidation", plugin = {
+		"com.myntra.hooks" }, tags = "@ProductDetailsSectionDisplay", plugin = {
 				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm" }
 
 )

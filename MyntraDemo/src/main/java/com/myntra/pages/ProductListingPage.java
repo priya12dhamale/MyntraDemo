@@ -137,7 +137,7 @@ public class ProductListingPage {
 		return discountHeading.isDisplayed();
 	}
 
-	// Method to get product count
+	
 	public int getProductCount() {
 		return productList.size();
 	}

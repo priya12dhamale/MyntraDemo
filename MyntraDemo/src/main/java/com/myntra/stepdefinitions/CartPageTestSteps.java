@@ -24,18 +24,18 @@ public class CartPageTestSteps {
 	CartPage cart = new CartPage();
 
 	@Given("user is on home page")
-	public void user_is_on_home_page() {
-		// Browser already launched from BaseClass
+	public void userIsOnHomePage() {
+
 	}
 
 	@When("user hover on Women menu")
-	public void user_hover_on_women_menu() {
+	public void userHoverOnWomenMenu() {
 
 		home.hoverOnWomenMenu();
 	}
 
 	@When("user clicks on Indian Fusion Wear")
-	public void user_clicks_on_indian_fusion_wear() {
+	public void userClicksOnIndianFusionWear() {
 
 		home.clickIndianFusionWear();
 	}

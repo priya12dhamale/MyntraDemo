@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.myntra.tests.FunctionalityTests">
+      <class name="com.myntra.tests.ProductDetailPageTests">
         <methods>
+          <include name="verifyProductDetailsSectionDisplayed"/>
           <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="verifyAddToBag"/>
         </methods>
-      </class> <!-- com.myntra.tests.FunctionalityTests -->
+      </class> <!-- com.myntra.tests.ProductDetailPageTests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

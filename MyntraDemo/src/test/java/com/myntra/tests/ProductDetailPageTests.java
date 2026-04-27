@@ -229,26 +229,73 @@ public class ProductDetailPageTests extends BaseClass {
 	}
 
 	@Test
+	public void verifyProductRatingDisplayed() {
+
+		HomePage home = new HomePage();
+		SearchResultPage srp = new SearchResultPage();
+		ProductDetailPage pdp = new ProductDetailPage();
+
+		home.hoverOnWomenMenu();
+		home.clickIndianFusionWear();
+
+		srp.clickProductByIndex(1);
+		switchToNewWindow();
+
+		Assert.assertTrue(pdp.isRatingDisplayed(), "Product rating is not displayed");
+	}
+
+	@Test
+	public void verifyProductImageDisplayedInPdp() {
+
+		HomePage home = new HomePage();
+		SearchResultPage srp = new SearchResultPage();
+		ProductDetailPage pdp = new ProductDetailPage();
+
+		home.hoverOnWomenMenu();
+		home.clickIndianFusionWear();
+
+		srp.clickProductByIndex(1);
+		switchToNewWindow();
+
+		Assert.assertTrue(pdp.isProductImageDisplayed(), "Product image is not displayed");
+	}
+
+	@Test
+	public void verifyProductDetailsSectionDisplayed() {
+
+		HomePage home = new HomePage();
+		SearchResultPage srp = new SearchResultPage();
+		ProductDetailPage pdp = new ProductDetailPage();
+
+		home.hoverOnWomenMenu();
+		home.clickIndianFusionWear();
+
+		srp.clickProductByIndex(1);
+		switchToNewWindow();
+
+		Assert.assertTrue(pdp.isProductDetailsSectionDisplayed(), "Product Details section is not displayed");
+	}
+
+	@Test
 	public void verifyInvalidPincodeErrorMessage() {
 
 		HomePage home = new HomePage();
 		ProductListingPage plp = new ProductListingPage();
 		ProductDetailPage pdp = new ProductDetailPage();
 		SearchResultPage srp = new SearchResultPage();
-		// Step 1: Navigate to PDP
+
 		home.hoverOnWomenMenu();
 		home.clickIndianFusionWear();
 		srp.clickProductByIndex(1);
 		switchToNewWindow();
-		
+
 		pdp.enterPincode("123");
 
-	
 		pdp.clickOnCheckButton();
-	
+
 		Assert.assertTrue(pdp.isInvalidPinMessageDisplayed(), "Invalid pincode error message should be displayed");
-	//	Assert.assertEquals(actualError, "Please enter a valid pincode",
-				//"Error message is not displayed for invalid pincode");
+		// Assert.assertEquals(actualError, "Please enter a valid pincode",
+		// "Error message is not displayed for invalid pincode");
 	}
 
 }
