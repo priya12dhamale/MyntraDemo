@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import com.listener.MyTestListener;
 import com.myntra.base.BaseClass;
+import com.myntra.base.KeyWord;
 import com.myntra.pages.HomePage;
 import com.myntra.pages.ProductListingPage;
 import com.myntra.pages.SearchResultPage;
@@ -41,6 +42,7 @@ public class HomePageTests extends BaseClass {
 		Assert.assertTrue(currentUrl.contains("fusion-wear"), "Indian and Fusion Wear section not opened");
 	}
 
+	@Test
 	public void verifyWesternWearMenuNavigation() {
 
 		HomePage home = new HomePage();
@@ -76,11 +78,22 @@ public class HomePageTests extends BaseClass {
 	}
 
 	@Test
+	public void verifyCartIconNavigation() {
+
+		HomePage home = new HomePage();
+
+		home.bagIconClick();
+
+		String currentUrl = driver.getCurrentUrl();
+
+		Assert.assertTrue(currentUrl.contains("cart"), "User not navigated to Cart page");
+	}
+
+	@Test
 	public void verifyWishlistAccessWithoutLogin() {
 
 		HomePage home = new HomePage();
 		home.clickWishlistIcon();
-		//home.wishlistIconIsDisplayed();
 		String currentUrl = driver.getCurrentUrl();
 		Assert.assertTrue(currentUrl.contains("/wishlist"), "User not redirected to login page");
 	}

@@ -46,6 +46,7 @@ public class KeyWord {
 	}
 
 	public static void closeBrowser() {
+		
 		driver.quit();
 
 	}

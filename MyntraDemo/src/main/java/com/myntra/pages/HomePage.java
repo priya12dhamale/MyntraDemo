@@ -56,6 +56,8 @@ public class HomePage {
 
 	@FindBy(xpath = "//a[@href='/women-jewellery']")
 	WebElement jewelleryOption;
+	
+	
 
 	public HomePage() {
 
@@ -154,6 +156,8 @@ public class HomePage {
 	public boolean isLoginPageDisplayed() {
 		return mobileNumberField.isDisplayed();
 	}
+	
+	
 
 	public void searchProductUsingSuggestions(String products) {
 		WaitFor.elementToBeVisible(searchBox);

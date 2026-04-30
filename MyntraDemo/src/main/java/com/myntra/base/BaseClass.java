@@ -22,9 +22,9 @@ public class BaseClass {
 
 	}
 	
-	@AfterMethod
-	public void tearDown() {
-		closeBrowser();
-	}
+//	@AfterMethod
+//	public void tearDown() {
+//		closeBrowser();
+//	}
 
 }

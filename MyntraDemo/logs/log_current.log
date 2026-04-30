@@ -1,6 +1,48 @@
-2026-04-27 16:51:48 INFO  com.myntra.hooks.Hooks - Browser is opened..!
-2026-04-27 16:51:55 INFO  com.myntra.hooks.Hooks - Driver is Quit successfully....!
-2026-04-27 16:54:35 INFO  com.myntra.hooks.Hooks - Browser is opened..!
-2026-04-27 16:54:42 INFO  com.myntra.hooks.Hooks - Driver is Quit successfully....!
-2026-04-27 17:05:47 INFO  com.myntra.hooks.Hooks - Browser is opened..!
-2026-04-27 17:05:57 INFO  com.myntra.hooks.Hooks - Driver is Quit successfully....!
+2026-04-29 16:46:58 DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /xl/_rels/workbook.xml.rels
+2026-04-29 16:46:58 DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /_rels/.rels
+2026-04-29 16:47:44 INFO  com.myntra.tests.ProductListingPageTests - Initial Count: 50
+2026-04-29 16:47:56 INFO  com.myntra.tests.ProductListingPageTests - Product Count: 50
+2026-04-29 16:48:12 INFO  com.myntra.tests.ProductListingPageTests - Current URL: https://www.myntra.com/leggings/twin+birds/twin-birds-churidar-length-slip-on-leggings/28027138/buy
+2026-04-29 16:48:33 INFO  com.myntra.tests.ProductListingPageTests - Before Scroll: 50
+2026-04-29 16:48:33 INFO  com.myntra.tests.ProductListingPageTests - After Scroll: 50
+2026-04-29 16:49:15 INFO  com.myntra.tests.ProductListingPageTests - Product Count: 50
+2026-04-29 16:49:48 INFO  com.myntra.tests.ProductListingPageTests - Before: 50
+2026-04-29 16:49:48 INFO  com.myntra.tests.ProductListingPageTests - After: 50
+2026-04-29 16:50:03 INFO  com.myntra.tests.ProductListingPageTests - Current URL: https://www.myntra.com/leggings/twin+birds/twin-birds-churidar-length-slip-on-leggings/28027138/buy
+2026-04-29 16:50:20 INFO  com.myntra.tests.ProductListingPageTests - product count after clearing filters: 50
+2026-04-29 16:50:39 DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /xl/_rels/workbook.xml.rels
+2026-04-29 16:50:39 DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /_rels/.rels
+2026-04-29 16:50:48 INFO  com.myntra.tests.ProductListingPageTests - URL: https://www.myntra.com/fusion-wear?f=Categories%3AKurtas
+2026-04-29 16:51:40 INFO  com.myntra.tests.ProductListingPageTests - Actual Prices: [1325, 1301, 1299, 1299, 1291, 1245, 1245, 1224, 1209, 1208, 1146, 1119, 1089, 1089, 1089, 1081, 1081, 1081, 1081, 999]
+2026-04-29 16:51:40 INFO  com.myntra.tests.ProductListingPageTests - Sorted Prices: [1325, 1301, 1299, 1299, 1291, 1245, 1245, 1224, 1209, 1208, 1146, 1119, 1089, 1089, 1089, 1081, 1081, 1081, 1081, 999]
+2026-04-29 16:51:54 INFO  com.myntra.tests.ProductListingPageTests - Before Scroll: 50
+2026-04-29 16:51:54 INFO  com.myntra.tests.ProductListingPageTests - After Scroll: 50
+2026-04-29 16:52:15 INFO  com.myntra.tests.ProductListingPageTests - Initial Count: 50
+2026-04-29 16:52:20 INFO  com.myntra.tests.ProductListingPageTests - Filtered Count: 50
+2026-04-29 16:52:20 INFO  com.myntra.tests.ProductListingPageTests - After Clear Count: 50
+2026-04-29 16:52:37 INFO  com.myntra.tests.ProductListingPageTests - Brand chip displayed: true
+2026-04-29 16:53:02 DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /xl/_rels/workbook.xml.rels
+2026-04-29 16:53:02 DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /_rels/.rels
+2026-04-29 16:53:11 INFO  com.myntra.tests.ProductListingPageTests - URL: https://www.myntra.com/fusion-wear?f=Categories%3AKurtas
+2026-04-29 16:58:03 DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /xl/_rels/workbook.xml.rels
+2026-04-29 16:58:03 DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /_rels/.rels
+2026-04-29 16:58:13 INFO  com.myntra.tests.ProductListingPageTests - URL: https://www.myntra.com/fusion-wear?f=Categories%3AKurtas
+2026-04-29 16:59:21 DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /xl/_rels/workbook.xml.rels
+2026-04-29 16:59:21 DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /_rels/.rels
+2026-04-29 16:59:31 INFO  com.myntra.tests.ProductListingPageTests - URL: https://www.myntra.com/fusion-wear?f=Categories%3AKurtas
+2026-04-29 16:59:40 INFO  com.myntra.tests.ProductListingPageTests - URL: https://www.myntra.com/fusion-wear?f=Categories%3ASarees
+2026-04-29 16:59:52 INFO  com.myntra.tests.ProductListingPageTests - URL: https://www.myntra.com/fusion-wear?f=Categories%3ADress%20Material
+2026-04-29 17:00:02 INFO  com.myntra.tests.ProductListingPageTests - URL: https://www.myntra.com/fusion-wear?f=Categories%3AEthnic%20Dresses
+2026-04-29 17:00:12 INFO  com.myntra.tests.ProductListingPageTests - URL: https://www.myntra.com/fusion-wear?f=Categories%3AKurta%20Sets
+2026-04-29 17:03:39 INFO  com.myntra.hooks.Hooks - Browser is opened..!
+2026-04-29 17:04:18 INFO  com.myntra.hooks.Hooks - Driver is Quit successfully....!
+2026-04-29 17:04:37 INFO  com.myntra.hooks.Hooks - Browser is opened..!
+2026-04-29 17:04:45 INFO  com.myntra.hooks.Hooks - Driver is Quit successfully....!
+2026-04-29 17:04:46 INFO  com.myntra.hooks.Hooks - Browser is opened..!
+2026-04-29 17:04:52 INFO  com.myntra.hooks.Hooks - Driver is Quit successfully....!
+2026-04-29 17:04:53 INFO  com.myntra.hooks.Hooks - Browser is opened..!
+2026-04-29 17:05:00 INFO  com.myntra.hooks.Hooks - Driver is Quit successfully....!
+2026-04-29 17:05:00 INFO  com.myntra.hooks.Hooks - Browser is opened..!
+2026-04-29 17:05:08 INFO  com.myntra.hooks.Hooks - Driver is Quit successfully....!
+2026-04-29 17:05:09 INFO  com.myntra.hooks.Hooks - Browser is opened..!
+2026-04-29 17:05:17 INFO  com.myntra.hooks.Hooks - Driver is Quit successfully....!
